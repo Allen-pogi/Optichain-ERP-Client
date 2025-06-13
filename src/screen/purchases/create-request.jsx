@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Header from "../../components/header";
+import { DUMMY_ITEMS } from "../../components/config/config";
+import Tabs from "../../components/tabs/tabs";
+import ItemsTable from "../../components/tabs/ItemsTable";
 
-const DUMMY_ITEMS = [
-  { inventory: "Item001", itemclass:"MHE-SPR-LND", subitem: "A1", description: "Paper A4", uom: "Ream", orderQty: 1, unitCost: 100, extVendorCost: 100, location: "WH1", vendor: "VendorX" },
-  { inventory: "Item002", itemclass:"MHE-SPR-LND", subitem: "B2", description: "Pen Blue", uom: "Box", orderQty: 2, unitCost: 50, extVendorCost: 100, location: "WH2", vendor: "VendorY" },
-  { inventory: "Item003", itemclass:"MHE-SPR-LND", subitem: "C3", description: "Notebook", uom: "Piece", orderQty: 5, unitCost: 20, extVendorCost: 100, location: "WH1", vendor: "VendorZ" },
-   { inventory: "Item004", itemclass:"MHE-SPR-LND", subitem: "C3", description: "Notebook", uom: "Piece", orderQty: 5, unitCost: 20, extVendorCost: 100, location: "WH1", vendor: "VendorZ" }
-];
+
 
 const CreateRequest = () => {
 
@@ -174,7 +172,7 @@ const CreateRequest = () => {
           </div>
 
           {/* Tabs */}
-          <div className="border-b border-gray-200">
+          {/* <div className="border-b border-gray-200">
             <nav aria-label="Tabs" className="-mb-px flex space-x-8">
               <a className="tab tab-active border-b-2 border-blue-600 text-blue-600 font-semibold pb-2" href="#">DOCUMENT DETAILS</a>
               <a className="tab text-gray-500 hover:text-gray-700 hover:border-gray-300 pb-2" href="#">SHIPPING INSTRUCTIONS</a>
@@ -182,229 +180,12 @@ const CreateRequest = () => {
               <a className="tab text-gray-500 hover:text-gray-700 hover:border-gray-300 pb-2" href="#">APPROVAL DETAILS</a>
               <a className="tab text-gray-500 hover:text-gray-700 hover:border-gray-300 pb-2" href="#">OTHER INFORMATION</a>
             </nav>
-          </div>
-
-          {/* Items Table */}
-          <div className="mt-6">
-            <div className="flex items-center space-x-2 mb-3">
-             <button
-                className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-md"
-                onClick={() => setShowItemPicker(true)}
-                type="button"
-              >
-                <span className="material-icons text-xl">add</span>
-              </button>
-              <button className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-md">
-                <span className="material-icons text-xl">remove</span>
-              </button>
-              <button className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-md">
-                <span className="material-icons text-xl">edit</span>
-              </button>
-              <span className="text-gray-300">|</span>
-              <button className="bg-gray-200 text-gray-700 px-4 py-1.5 rounded-md shadow-sm hover:bg-gray-300 text-sm font-medium">ADD ITEM</button>
-              <button className="text-gray-700 px-4 py-1.5 rounded-md hover:bg-gray-100 text-sm">REQUISITION DETAILS</button>
-              <div className="flex-grow"></div>
-              <button className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-md">
-                <span className="material-icons text-xl">height</span>
-              </button>
-              <button className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-md">
-                <span className="material-icons text-xl">grid_view</span>
-              </button>
-            </div>
+          </div> */}
 
 
+       <Tabs itemsTable={<ItemsTable rows={rows} setRows={setRows} />} />
 
-         {showItemPicker && (
-  <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
-    <div className="bg-white rounded shadow-lg p-6 min-w-[400px]">
-      <h3 className="text-lg font-bold mb-4">Select Item to Add</h3>
-      <table className="min-w-full mb-4">
-        <thead>
-          <tr>
-            <th className="px-8 py-1 text-left">Inventory</th>
-            <th className="px-8 py-1 text-left">Description</th>
-            <th className="px-8 py-1 text-left">Item Class</th>
-            <th className="px-8 py-1 text-left">UOM</th>
-          </tr>
-        </thead>
-        <tbody>
-          {DUMMY_ITEMS.map((item, idx) => (
-            <tr
-              key={idx}
-              className={`hover:bg-blue-100 cursor-pointer ${selectedIdx === idx ? "bg-blue-200" : ""}`}
-              onClick={() => setSelectedIdx(idx)}
-            >
-              <td className="px-8 py-1 border-b-2">{item.inventory}</td>
-              <td className="px-8 py-1 border-b-2">{item.description}</td>
-              <td className="px-8 py-1 border-b-2">{item.itemclass}</td>
-              <td className="px-8 py-1 border-b-2">{item.uom}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="flex justify-end space-x-2">
-        <button
-          className={`px-4 py-1 rounded ${selectedIdx === null ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-blue-500 text-white hover:bg-blue-600"}`}
-          disabled={selectedIdx === null}
-          onClick={() => {
-            if (selectedIdx !== null) {
-              handleAddItem(DUMMY_ITEMS[selectedIdx]);
-              setSelectedIdx(null);
-            }
-          }}
-        >
-          Add
-        </button>
-        <button
-          className="px-4 py-1 bg-gray-300 rounded hover:bg-gray-400"
-          onClick={() => {
-            setShowItemPicker(false);
-            setSelectedIdx(null);
-          }}
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-            <div className="overflow-x-auto border border-gray-200 rounded-md">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-3 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-10">
-                      <input className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" type="checkbox" />
-                    </th>
-                    <th className="px-3 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-10">
-                      <span className="material-icons text-base">flag</span>
-                    </th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Inventory</th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subitem</th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><sup>*</sup>UOM</th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Qty.</th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Est. Unit Cost</th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Est. Ext. Vendor Cost</th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                    <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vendor</th>
-                  </tr>
-                </thead>
-                
-                   <tbody className="bg-white divide-y divide-gray-200">
-                  {rows.map((row, idx) => (
-                    <tr key={idx}>
-                      <td className="px-3 py-3 whitespace-nowrap"></td>
-                      <td className="px-3 py-3 whitespace-nowrap"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.inventory || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].inventory = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.subitem || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].subitem = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.description || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].description = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.uom || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].uom = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.orderQty || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].orderQty = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.unitCost || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].unitCost = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.extVendorCost || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].extVendorCost = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.location || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].location = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
-                        <input
-                          className="w-full bg-transparent"
-                          value={row.vendor || ""}
-                          onChange={e => {
-                            const newRows = [...rows];
-                            newRows[idx].vendor = e.target.value;
-                            setRows(newRows);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="pt-2 pr-2 flex justify-end">
-              <div className="w-4 h-20 bg-gray-300 rounded-full relative">
-                <div className="w-4 h-6 bg-gray-500 rounded-full absolute top-0"></div>
-              </div>
-            </div>
-          </div>
+       
         </div>
       </main>
 

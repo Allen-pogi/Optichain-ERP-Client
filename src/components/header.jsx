@@ -1,3 +1,5 @@
+import RealtimeClock from "./clock";
+
      const Header = () => {
   return (
   <header className="bg-red-600 text-white shadow-md">
@@ -20,7 +22,7 @@
           <div className="flex items-center space-x-4">
             <div className="text-right">
               <div className="text-sm font-semibold">Prime Sales Inc. - MANILA</div>
-              <div className="text-xs">6/11/2025 2:26 PM</div>
+              <div className="text-xs"><RealtimeClock/></div>
             </div>
             <button className="p-2 rounded-full hover:bg-blue-700">
               <span className="material-icons">help_outline</span>

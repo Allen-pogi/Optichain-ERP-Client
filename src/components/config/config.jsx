@@ -2,7 +2,7 @@ import React from 'react';
 
 
 //sidebar 
-const sidebarItems = [
+export const sidebarItems = [
   {
     label: "Dashboard",
     to: "/home/dashboard",
@@ -72,4 +72,13 @@ const sidebarItems = [
   
 ];
 
-export default sidebarItems;
+
+
+export const DUMMY_ITEMS = [
+  { inventory: "Item001", itemclass:"MHE-SPR-LND asasdasd", subitem: "A1", itemstatus:"Active", type: "Finishe Goods", baseunit:"PIECE", salesunit:"PIECE", purchaseunit:"PIECE", defaultprice: 0, description: "Paper A4 axsasaassaasdassdasdasdadssdasadasdsasadsadsda", uom: "Ream", orderQty: 1, unitCost: 100, extVendorCost: 100, location: "WH1", vendor: "VendorX" },
+  { inventory: "Item002", itemclass:"MHE-SPR-LND", subitem: "B2", itemstatus:"Active", type: "Finishe Goods", baseunit:"PIECE", salesunit:"PIECE", purchaseunit:"PIECE", defaultprice: 0, description: "Pen Blue", uom: "Box", orderQty: 2, unitCost: 50, extVendorCost: 100, location: "WH2", vendor: "VendorY" },
+  { inventory: "Item003", itemclass:"MHE-SPR-LND", subitem: "C3",  itemstatus:"Active", type: "Finishe Goods", baseunit:"PIECE", salesunit:"PIECE", purchaseunit:"PIECE", defaultprice: 0, description: "Notebook", uom: "Piece", orderQty: 5, unitCost: 20, extVendorCost: 100, location: "WH1", vendor: "VendorZ" },
+   { inventory: "Item004", itemclass:"MHE-SPR-LND", subitem: "C3", itemstatus:"Active", type: "Finishe Goods", baseunit:"PIECE", salesunit:"PIECE", purchaseunit:"PIECE", defaultprice: 0,  description: "Notebook", uom: "Piece", orderQty: 5, unitCost: 20, extVendorCost: 100, location: "WH1", vendor: "VendorZ", }
+];
+
+

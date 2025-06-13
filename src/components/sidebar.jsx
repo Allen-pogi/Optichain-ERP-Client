@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import sidebarItems from './config/config';
+import { sidebarItems } from './config/config';
 
 
 
