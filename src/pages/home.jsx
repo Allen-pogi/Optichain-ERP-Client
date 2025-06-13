@@ -2,6 +2,8 @@ import React from "react";
 import Sidebar from "../components/sidebar";
 import { Outlet, useLocation } from "react-router-dom";
 
+
+
 const Home = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const location = useLocation();
@@ -15,7 +17,7 @@ const Home = () => {
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       <div className="flex h-full grow flex-col">
-        <div className=" flex flex-1 justify-center py-1">
+        <div className=" flex flex-1 justify-center ">
           {/* Sidebar */}
           <Sidebar />
           {/* Main Content */}

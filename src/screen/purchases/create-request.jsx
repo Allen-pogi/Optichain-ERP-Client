@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/header";
 
+const DUMMY_ITEMS = [
+  { inventory: "Item001", itemclass:"MHE-SPR-LND", subitem: "A1", description: "Paper A4", uom: "Ream", orderQty: 1, unitCost: 100, extVendorCost: 100, location: "WH1", vendor: "VendorX" },
+  { inventory: "Item002", itemclass:"MHE-SPR-LND", subitem: "B2", description: "Pen Blue", uom: "Box", orderQty: 2, unitCost: 50, extVendorCost: 100, location: "WH2", vendor: "VendorY" },
+  { inventory: "Item003", itemclass:"MHE-SPR-LND", subitem: "C3", description: "Notebook", uom: "Piece", orderQty: 5, unitCost: 20, extVendorCost: 100, location: "WH1", vendor: "VendorZ" },
+   { inventory: "Item004", itemclass:"MHE-SPR-LND", subitem: "C3", description: "Notebook", uom: "Piece", orderQty: 5, unitCost: 20, extVendorCost: 100, location: "WH1", vendor: "VendorZ" }
+];
+
 const CreateRequest = () => {
+
+   const [rows, setRows] = useState([]);
+ const [showItemPicker, setShowItemPicker] = useState(false);
+ const [selectedIdx, setSelectedIdx] = useState(null);
+
+
+ // Add item from picker to rows
+  const handleAddItem = (item) => {
+    setRows([...rows, { ...item }]);
+    setShowItemPicker(false);
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col font-roboto">
       {/* Header */}
@@ -168,7 +187,11 @@ const CreateRequest = () => {
           {/* Items Table */}
           <div className="mt-6">
             <div className="flex items-center space-x-2 mb-3">
-              <button className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-md">
+             <button
+                className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-md"
+                onClick={() => setShowItemPicker(true)}
+                type="button"
+              >
                 <span className="material-icons text-xl">add</span>
               </button>
               <button className="p-1.5 text-gray-600 hover:bg-gray-100 rounded-md">
@@ -188,6 +211,63 @@ const CreateRequest = () => {
                 <span className="material-icons text-xl">grid_view</span>
               </button>
             </div>
+
+
+
+         {showItemPicker && (
+  <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
+    <div className="bg-white rounded shadow-lg p-6 min-w-[400px]">
+      <h3 className="text-lg font-bold mb-4">Select Item to Add</h3>
+      <table className="min-w-full mb-4">
+        <thead>
+          <tr>
+            <th className="px-8 py-1 text-left">Inventory</th>
+            <th className="px-8 py-1 text-left">Description</th>
+            <th className="px-8 py-1 text-left">Item Class</th>
+            <th className="px-8 py-1 text-left">UOM</th>
+          </tr>
+        </thead>
+        <tbody>
+          {DUMMY_ITEMS.map((item, idx) => (
+            <tr
+              key={idx}
+              className={`hover:bg-blue-100 cursor-pointer ${selectedIdx === idx ? "bg-blue-200" : ""}`}
+              onClick={() => setSelectedIdx(idx)}
+            >
+              <td className="px-8 py-1 border-b-2">{item.inventory}</td>
+              <td className="px-8 py-1 border-b-2">{item.description}</td>
+              <td className="px-8 py-1 border-b-2">{item.itemclass}</td>
+              <td className="px-8 py-1 border-b-2">{item.uom}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="flex justify-end space-x-2">
+        <button
+          className={`px-4 py-1 rounded ${selectedIdx === null ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-blue-500 text-white hover:bg-blue-600"}`}
+          disabled={selectedIdx === null}
+          onClick={() => {
+            if (selectedIdx !== null) {
+              handleAddItem(DUMMY_ITEMS[selectedIdx]);
+              setSelectedIdx(null);
+            }
+          }}
+        >
+          Add
+        </button>
+        <button
+          className="px-4 py-1 bg-gray-300 rounded hover:bg-gray-400"
+          onClick={() => {
+            setShowItemPicker(false);
+            setSelectedIdx(null);
+          }}
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
             <div className="overflow-x-auto border border-gray-200 rounded-md">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
@@ -209,20 +289,111 @@ const CreateRequest = () => {
                     <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vendor</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {[...Array(3)].map((_, idx) => (
+                
+                   <tbody className="bg-white divide-y divide-gray-200">
+                  {rows.map((row, idx) => (
                     <tr key={idx}>
                       <td className="px-3 py-3 whitespace-nowrap"></td>
                       <td className="px-3 py-3 whitespace-nowrap"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
-                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500"></td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.inventory || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].inventory = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.subitem || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].subitem = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.description || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].description = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.uom || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].uom = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.orderQty || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].orderQty = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.unitCost || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].unitCost = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.extVendorCost || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].extVendorCost = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.location || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].location = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
+                      <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                        <input
+                          className="w-full bg-transparent"
+                          value={row.vendor || ""}
+                          onChange={e => {
+                            const newRows = [...rows];
+                            newRows[idx].vendor = e.target.value;
+                            setRows(newRows);
+                          }}
+                        />
+                      </td>
                     </tr>
                   ))}
                 </tbody>
