@@ -3,170 +3,18 @@ import { BiEdit, BiPlus, BiRefresh, BiTrash } from "react-icons/bi";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import Header from "../../components/header";
+import { requests } from "../../components/config/config";
 
-const requests = [
-  {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-    description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-    notes: true,
-  },
 
-    {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-    description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-  },
-  
-    {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-  },
-
-      {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-    notes:true,
-  },
-
-      {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-    notes: true,
-
-  },
-
-      {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-  },
-  
-      {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-    notes: true,
-  },
-        {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-  },
-        {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-  },
-        {
-    ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
-    date: "6/11/2025",
-    requestClass: "RNTLPRTSRQ",
-    requestedBy: "BA00000258",
-    location: "MAIN",
-    department: "MHESER",
-       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
-    extCost: "0.00",
-    icon: "description",
-    statusIcon: "chevron_right",
-  },
-  // ...add other request objects here, following the same structure
-];
 
 const Request = () => {
   return (
     <div className="bg-white min-h-screen  font-roboto">
-      <div className="container mx-auto     ">
+      <div className="      ">
         {/* Header */}
         <Header />
         <header className="flex justify-between items-center pb-4 border-b border-gray-300">
-          <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="container  px-4 py-3 flex items-center justify-between">
 
             <div className="flex">
                <h1 className="text-2xl font-semibold text-gray-800">Requests</h1>

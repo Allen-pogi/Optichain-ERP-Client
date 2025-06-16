@@ -13,15 +13,15 @@ const Home = () => {
 
   return (
     <div
-      className="relative flex min-h-screen flex-col bg-white overflow-x-hidden"
+      className=" flex min-h-screen flex-col bg-white overflow-x-hidden"
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
-      <div className="flex h-full grow flex-col">
-        <div className=" flex flex-1 justify-center ">
+      <div className="flex h-full flex-col">
+        <div className=" flex  justify-center ">
           {/* Sidebar */}
           <Sidebar />
           {/* Main Content */}
-          <div className="flex flex-col min-w-[82em] max-w-[em] flex-1">
+          <div className="flex flex-col min-w-[82em]  flex-1">
             {isHomeRoot && (
               <div className="flex flex-col items-center justify-center h-full">
                 <h2 className="text-2xl font-bold mb-2">

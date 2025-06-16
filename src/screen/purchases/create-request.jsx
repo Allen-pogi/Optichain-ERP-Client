@@ -10,7 +10,9 @@ const CreateRequest = () => {
 
    const [rows, setRows] = useState([]);
  const [showItemPicker, setShowItemPicker] = useState(false);
- const [selectedIdx, setSelectedIdx] = useState(null);
+  const [showNotes, setShowNotes] = useState(false);
+  const [note, setNote] = useState("");
+  const [savedNote, setSavedNote] = useState("");
 
 
  // Add item from picker to rows
@@ -18,6 +20,34 @@ const CreateRequest = () => {
     setRows([...rows, { ...item }]);
     setShowItemPicker(false);
   };
+
+const handleOpenNotes = () => {
+    setNote(savedNote);
+    setShowNotes(true);
+  };
+
+  // Save note (update both savedNote and textarea)
+  const handleNote = () => {
+    setSavedNote(note);
+    setShowNotes(false);
+  };
+
+  // Close modal without saving
+  const handleCloseNotes = () => {
+    setShowNotes(false);
+  };
+
+
+const getTotalValues = (rows) => {
+  const totalOrderQty = rows.reduce((sum, row) => sum + Number(row.orderQty || 0), 0);
+  const totalUnitCost = rows.reduce((sum, row) => sum + Number(row.unitCost || 0), 0);
+  const totalExtCost = rows.reduce((sum, row) => sum + Number(row.extVendorCost || 0), 0);
+  return { totalOrderQty, totalUnitCost, totalExtCost };
+};
+
+const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
+
+
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col font-roboto">
@@ -29,10 +59,14 @@ const CreateRequest = () => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-gray-800">Requests</h1>
           <nav className="flex items-center space-x-6 text-sm text-gray-600">
-            <a className="hover:text-blue-600 flex items-center space-x-1" href="#">
+                 <button
+              className="hover:text-blue-600 flex items-center space-x-1"
+             onClick={handleOpenNotes}
+              type="button"
+            >
               <span className="material-icons text-base">notes</span>
               <span>NOTES</span>
-            </a>
+            </button>
             <a className="hover:text-blue-600" href="#">ACTIVITIES</a>
             <a className="hover:text-blue-600" href="#">FILES</a>
             <a className="hover:text-blue-600" href="#">NOTIFICATIONS</a>
@@ -44,6 +78,12 @@ const CreateRequest = () => {
           </nav>
         </div>
       </div>
+
+{/* <div className="mt-4 text-sm text-right text-gray-700">
+  <p><strong>Total Order Qty:</strong> {totalOrderQty}</p>
+  <p><strong>Total Unit Cost:</strong> {totalUnitCost.toFixed(2)}</p>
+  <p><strong>Total Ext. Vendor Cost:</strong> {totalExtCost.toFixed(2)}</p>
+</div> */}
 
       {/* Main Content */}
       <main className="flex-grow container mx-auto px-4 py-6">
@@ -119,8 +159,7 @@ const CreateRequest = () => {
               </div>
               <label className="block text-sm font-medium text-gray-700 mt-4 mb-1" htmlFor="date"><sup>*</sup> Date:</label>
               <div className="relative">
-                <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 pr-10" id="date" type="text" defaultValue="6/11/2025" />
-                <span className="material-icons absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">calendar_today</span>
+                <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 pr-10" id="date" type="date" defaultValue="6/11/2025" />
               </div>
               <div className="mt-2 flex items-center">
                 <input className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" id="approved" name="approved" type="checkbox" />
@@ -163,25 +202,46 @@ const CreateRequest = () => {
             {/* Column 3 */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="est-cost">Est. Ext. Cost:</label>
-              <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-right bg-gray-50" id="est-cost" readOnly type="text" defaultValue="0.00" />
+              <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-right bg-gray-50" id="est-cost" readOnly type="text" value={totalUnitCost.toFixed(2)} />
               <label className="block text-sm font-medium text-gray-700 mt-4 mb-1" htmlFor="open-qty">Open Qty:</label>
-              <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-right bg-gray-50" id="open-qty" readOnly type="text" defaultValue="0.00" />
+              <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-right bg-gray-50" id="open-qty" readOnly type="text" value={totalOrderQty} />
               <label className="block text-sm font-medium text-gray-700 mt-[6.5rem] mb-1" htmlFor="description">Description:</label>
               <textarea className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3" id="description" rows="3"></textarea>
             </div>
           </div>
 
           {/* Tabs */}
-          {/* <div className="border-b border-gray-200">
-            <nav aria-label="Tabs" className="-mb-px flex space-x-8">
-              <a className="tab tab-active border-b-2 border-blue-600 text-blue-600 font-semibold pb-2" href="#">DOCUMENT DETAILS</a>
-              <a className="tab text-gray-500 hover:text-gray-700 hover:border-gray-300 pb-2" href="#">SHIPPING INSTRUCTIONS</a>
-              <a className="tab text-gray-500 hover:text-gray-700 hover:border-gray-300 pb-2" href="#">VENDOR INFO</a>
-              <a className="tab text-gray-500 hover:text-gray-700 hover:border-gray-300 pb-2" href="#">APPROVAL DETAILS</a>
-              <a className="tab text-gray-500 hover:text-gray-700 hover:border-gray-300 pb-2" href="#">OTHER INFORMATION</a>
-            </nav>
-          </div> */}
-
+   {showNotes && (
+        <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
+          <div className="bg-white rounded shadow-lg p-6 min-w-[400px]">
+            <h2 className="text-lg font-bold mb-4">Notes</h2>
+            <textarea
+              className="block w-[32em] h-[12em] shadow-sm sm:text-sm  border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3"
+              rows={3}
+              value={note}
+              onChange={e => setNote(e.target.value)}
+              placeholder="Enter your note here..."
+            />
+            <div className="flex justify-end mt-2 space-x-2">
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                onClick={handleNote}
+                type="button"
+              >
+                Save Note
+              </button>
+              <button
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                onClick={handleCloseNotes}
+                type="button"
+              >
+                Close
+              </button>
+            </div>
+       
+          </div>
+        </div>
+      )}
 
        <Tabs itemsTable={<ItemsTable rows={rows} setRows={setRows} />} />
 
