@@ -16,10 +16,6 @@ const CreateRequest = () => {
 
 
  // Add item from picker to rows
-  const handleAddItem = (item) => {
-    setRows([...rows, { ...item }]);
-    setShowItemPicker(false);
-  };
 
 const handleOpenNotes = () => {
     setNote(savedNote);
@@ -41,21 +37,32 @@ const handleOpenNotes = () => {
 const getTotalValues = (rows) => {
   const totalOrderQty = rows.reduce((sum, row) => sum + Number(row.orderQty || 0), 0);
   const totalUnitCost = rows.reduce((sum, row) => sum + Number(row.unitCost || 0), 0);
-  const totalExtCost = rows.reduce((sum, row) => sum + Number(row.extVendorCost || 0), 0);
+  const totalExtCost = rows.reduce((sum, row) => {
+    const qty = Number(row.orderQty || 0);
+    const cost = Number(row.unitCost || 0);
+    return sum + qty * cost;
+  }, 0);
   return { totalOrderQty, totalUnitCost, totalExtCost };
 };
+
 
 const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
 
 
 
+
+
+
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col font-roboto">
+    <div className="bg-gray-100 h-screen flex flex-col font-roboto overflow-hidden">
       {/* Header */}
 <Header/>
 
       {/* Subnav */}
-      <div className="bg-white shadow-sm pb-4 border-b">
+      <div className="overflow-auto">
+
+     
+      <div className="bg-white shadow-sm  border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-gray-800">Requests</h1>
           <nav className="flex items-center space-x-6 text-sm text-gray-600">
@@ -86,12 +93,12 @@ const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
 </div> */}
 
       {/* Main Content */}
-      <main className="flex-grow container mx-auto px-4 py-6">
+      <main className="flex-grow container mx-auto px-4 py-4 overflow-auto">
         <div className="bg-white p-6 rounded-lg shadow-lg">
           {/* Toolbar */}
           <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
             <div className="flex items-center space-x-2">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600 flex items-center space-x-1 text-sm">
+              <button className="bg-red-600 text-white px-4 py-2 rounded-md shadow-sm  flex items-center space-x-1 text-sm">
                 <span className="material-icons text-lg">save</span>
                 <span>SAVE &amp; CLOSE</span>
               </button>
@@ -202,7 +209,7 @@ const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
             {/* Column 3 */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="est-cost">Est. Ext. Cost:</label>
-              <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-right bg-gray-50" id="est-cost" readOnly type="text" value={totalUnitCost.toFixed(2)} />
+              <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-right bg-gray-50" id="est-cost" readOnly type="text" value={totalExtCost.toFixed(2)} />
               <label className="block text-sm font-medium text-gray-700 mt-4 mb-1" htmlFor="open-qty">Open Qty:</label>
               <input className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 py-2 px-3 text-right bg-gray-50" id="open-qty" readOnly type="text" value={totalOrderQty} />
               <label className="block text-sm font-medium text-gray-700 mt-[6.5rem] mb-1" htmlFor="description">Description:</label>
@@ -249,6 +256,7 @@ const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
         </div>
       </main>
 
+
       {/* Footer */}
       <footer className="bg-gray-100 py-2 border-t border-gray-300">
         <div className="container mx-auto px-4 flex justify-end items-center space-x-2">
@@ -267,6 +275,8 @@ const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
         </div>
       </footer>
     </div>
+    
+       </div>
   );
 };
 

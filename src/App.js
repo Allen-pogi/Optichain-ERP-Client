@@ -11,6 +11,7 @@ import ProtectedRoute from './components/protectedroute';
 import Request from './screen/purchases/request';
 import CreateRequest from './screen/purchases/create-request';
 import Header from './components/header';
+import FileUpload from './components/file-upload';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
     
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />
+           <Route path="file-upload" element={<FileUpload />} />
         <Route
           path="/home/*"
           element={
@@ -31,8 +33,8 @@ function App() {
         >
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="request" element={<Request />} />
-          <Route path="create_request" element={<CreateRequest />} />
-
+          <Route path="create_request" element={<CreateRequest />}  />
+       
           <Route path="inventory" element={<Inventory />} />
         </Route>
       </Routes>

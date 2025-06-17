@@ -13,7 +13,7 @@ const Sidebar = () => {
 
     return (
     
-  <div className="flex flex-col w-48">
+  <div className="flex flex-col w-48 min-h-screen">
     <div className="flex h-full min-h-[700px] flex-col justify-between bg-slate-50 border p-4">
       
           <div className="flex flex-col">
@@ -31,7 +31,7 @@ const Sidebar = () => {
                   to={item.to}
                   className={({ isActive }) =>
                     `flex items-center gap-3 px-3 py-2 rounded-lg transition ${
-                      isActive ? "bg-[#e7edf4]" : ""
+                      isActive ? "bg-red-100" : ""
                     }`
                   }
                 >
@@ -42,11 +42,11 @@ const Sidebar = () => {
                 <button
                   key={item.label}
                   onClick={handleLogout}
-                  className="flex items-center gap-3 px-3 py-2 rounded-lg transition text-[#0d141c] hover:bg-[#e7edf4]"
+                  className="flex items-center gap-3 px-3 py-2 rounded-lg transition text-[#0d141c] hover:bg-[#e7edf4] mt-8 "
                   style={{ background: "none", border: "none" }}
                 >
-                  <div>{item.icon}</div>
-                  <p className="text-sm font-medium leading-normal">{item.label}</p>
+                  <div className='font-bold text-red-600'>{item.icon}</div>
+                  <p className="text-sm font-semibold leading-normal text-red-600">{item.label}</p>
                 </button>
               )
             )}

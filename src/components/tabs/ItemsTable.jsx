@@ -5,11 +5,22 @@ const ItemsTable = ({ rows, setRows }) => {
   const [showItemPicker, setShowItemPicker] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState(null);
 
+
   // Add item from picker to rows
   const handleAddItem = (item) => {
     setRows([...rows, { ...item }]);
     setShowItemPicker(false);
   };
+
+const estimatedExtCost = (row) => {
+  const unitCost = parseFloat(row.unitCost) || 0;
+    const orderQty = parseFloat(row.orderQty) || 0;
+  
+    const estimatedExtCost = unitCost * orderQty;
+    return estimatedExtCost.toFixed(2);
+  }
+
+  
 
   return (
       <div className="mt-6">
@@ -79,7 +90,6 @@ const ItemsTable = ({ rows, setRows }) => {
                <td className="px-8 py- border-b-2">{item.salesunit}</td>
                <td className="px-8 py- border-b-2">{item.purchaseunit}</td>
                <td className="px-8 py- border-b-2">{item.defaultprice}</td>
- 
                
              </tr>
            ))}
@@ -128,7 +138,7 @@ const ItemsTable = ({ rows, setRows }) => {
                      <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><sup>*</sup>UOM</th>
                      <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Qty.</th>
                      <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Est. Unit Cost</th>
-                     <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Est. Ext. Vendor Cost</th>
+                     <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Est. Ext. Cost</th>
                      <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
                      <th className="px-6 py-2.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vendor</th>
                    </tr>
@@ -208,12 +218,8 @@ const ItemsTable = ({ rows, setRows }) => {
                        <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
                          <input
                            className="w-full bg-transparent"
-                           value={row.extVendorCost || ""}
-                           onChange={e => {
-                             const newRows = [...rows];
-                             newRows[idx].extVendorCost = e.target.value;
-                             setRows(newRows);
-                           }}
+                           value={estimatedExtCost(row)}
+                           
                          />
                        </td>
                        <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">

@@ -67,7 +67,6 @@ export const sidebarItems = [
         <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/>
       </svg>
     ),
-    action: "logout", // <-- add this
   },
   
 ];
@@ -101,8 +100,8 @@ export const requests = [
 
     {
     ref: "RQ00009777",
-    status: "Open",
-    priority: "High",
+    status: "Closed",
+    priority: "Normal",
     date: "6/11/2025",
     requestClass: "RNTLPRTSRQ",
     requestedBy: "BA00000258",
@@ -117,7 +116,7 @@ export const requests = [
     {
     ref: "RQ00009777",
     status: "Open",
-    priority: "High",
+    priority: "Normal",
     date: "6/11/2025",
     requestClass: "RNTLPRTSRQ",
     requestedBy: "BA00000258",
@@ -131,7 +130,7 @@ export const requests = [
 
       {
     ref: "RQ00009777",
-    status: "Open",
+    status: "Closed",
     priority: "High",
     date: "6/11/2025",
     requestClass: "RNTLPRTSRQ",
@@ -148,7 +147,7 @@ export const requests = [
       {
     ref: "RQ00009777",
     status: "Open",
-    priority: "High",
+    priority: "Normal",
     date: "6/11/2025",
     requestClass: "RNTLPRTSRQ",
     requestedBy: "BA00000258",
@@ -179,7 +178,7 @@ export const requests = [
   
       {
     ref: "RQ00009777",
-    status: "Open",
+    status: "Closed",
     priority: "High",
     date: "6/11/2025",
     requestClass: "RNTLPRTSRQ",
@@ -195,7 +194,7 @@ export const requests = [
         {
     ref: "RQ00009777",
     status: "Open",
-    priority: "High",
+    priority: "Normal",
     date: "6/11/2025",
     requestClass: "RNTLPRTSRQ",
     requestedBy: "BA00000258",
@@ -223,7 +222,78 @@ export const requests = [
         {
     ref: "RQ00009777",
     status: "Open",
-    priority: "High",
+    priority: "Normal",
+    date: "6/11/2025",
+    requestClass: "RNTLPRTSRQ",
+    requestedBy: "BA00000258",
+    location: "MAIN",
+    department: "MHESER",
+       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
+    extCost: "0.00",
+    icon: "description",
+    statusIcon: "chevron_right",
+  },
+  {
+    ref: "RQ00009777",
+    status: "Open",
+    priority: "Normal",
+    date: "6/11/2025",
+    requestClass: "RNTLPRTSRQ",
+    requestedBy: "BA00000258",
+    location: "MAIN",
+    department: "MHESER",
+       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
+    extCost: "0.00",
+    icon: "description",
+    statusIcon: "chevron_right",
+  },
+  {
+    ref: "RQ00009777",
+    status: "Open",
+    priority: "Normal",
+    date: "6/11/2025",
+    requestClass: "RNTLPRTSRQ",
+    requestedBy: "BA00000258",
+    location: "MAIN",
+    department: "MHESER",
+       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
+    extCost: "0.00",
+    icon: "description",
+    statusIcon: "chevron_right",
+  },
+
+    {
+    ref: "RQ00009777",
+    status: "Open",
+    priority: "Normal",
+    date: "6/11/2025",
+    requestClass: "RNTLPRTSRQ",
+    requestedBy: "BA00000258",
+    location: "MAIN",
+    department: "MHESER",
+       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
+    extCost: "0.00",
+    icon: "description",
+    statusIcon: "chevron_right",
+  },
+      {
+    ref: "RQ00009777",
+    status: "Open",
+    priority: "Normal",
+    date: "6/11/2025",
+    requestClass: "RNTLPRTSRQ",
+    requestedBy: "BA00000258",
+    location: "MAIN",
+    department: "MHESER",
+       description: "Purchase of Linde for Royal Cargo ADY6113 SN: 20240409V154",
+    extCost: "0.00",
+    icon: "description",
+    statusIcon: "chevron_right",
+  },
+      {
+    ref: "RQ00009777",
+    status: "Open",
+    priority: "Normal",
     date: "6/11/2025",
     requestClass: "RNTLPRTSRQ",
     requestedBy: "BA00000258",
