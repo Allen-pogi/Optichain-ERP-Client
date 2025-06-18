@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "./config/config";
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
@@ -17,7 +18,7 @@ const FileUpload = () => {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("http://localhost:5001/api/files/upload", formData, {
+      const res = await axios.post(`${API_BASE_URL}/files/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -41,7 +42,9 @@ const FileUpload = () => {
         Upload
       </button>
 
-      {uploaded && <p className="mt-4 text-green-600">File uploaded successfully!</p>}
+      {uploaded && (
+        <p className="mt-4 text-green-600">File uploaded successfully!</p>
+      )}
     </div>
   );
 };
