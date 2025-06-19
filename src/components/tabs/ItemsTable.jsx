@@ -230,7 +230,7 @@ const ItemsTable = ({ rows, setRows }) => {
               <tr key={idx}>
                 <td className="px-3 py-3 whitespace-nowrap"></td>
                 <td className="px-3 py-3 whitespace-nowrap"></td>
-                <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-2 py-3 whitespace-nowrap text-sm text-gray-500 ">
                   <input
                     className="w-full bg-transparent"
                     value={row.inventory || ""}

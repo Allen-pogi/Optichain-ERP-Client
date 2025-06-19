@@ -7,7 +7,7 @@ import MyPDF from "../../components/pdf/pdf";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const CreateRequest = () => {
-  const [rows, setRows] = useState([]);
+  const [rows, setRowsfromP] = useState([]);
   const [showItemPicker, setShowItemPicker] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
   const [note, setNote] = useState("");
@@ -412,7 +412,9 @@ const CreateRequest = () => {
               {({ loading }) => (loading ? "Loading PDF..." : "Download PDF")}
             </PDFDownloadLink>
 
-            <Tabs itemsTable={<ItemsTable rows={rows} setRows={setRows} />} />
+            <Tabs
+              itemsTable={<ItemsTable rows={rows} setRows={setRowsfromP} />}
+            />
           </div>
         </main>
 
