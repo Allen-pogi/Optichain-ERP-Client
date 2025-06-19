@@ -14,6 +14,7 @@ import Header from "./components/header";
 import FileUpload from "./components/file-upload";
 import FileList from "./components/files-list";
 import SamplePDF from "./components/pdf/samplepdf";
+import EditRequest from "./screen/purchases/edit-request";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="file-upload" element={<FileUpload />} />
         <Route path="PDF" element={<SamplePDF />} />
         <Route path="files" element={<FileList />} />
+        <Route path="/edit_request/:ref" element={<EditRequest />} />
         <Route
           path="/home/*"
           element={

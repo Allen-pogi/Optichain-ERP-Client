@@ -17,7 +17,7 @@ const highlightMatch = (text, query) => {
   );
 };
 
-const RequestTable = ({ currentRequests, searchQuery }) => {
+const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
   return (
     <div className="overflow-x-auto ">
       <table className="min-w-full divide-y divide-gray-200 ">
@@ -70,7 +70,11 @@ const RequestTable = ({ currentRequests, searchQuery }) => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {currentRequests.map((req, idx) => (
-            <tr key={req.ref} className="hover:bg-gray-50">
+            <tr
+              key={req.ref}
+              onDoubleClick={() => onRowDoubleClick(req)}
+              className="hover:bg-gray-50"
+            >
               <td className="px-3 whitespace-nowrap">
                 <span className="material-icons text-gray-400 text-base">
                   {req.statusIcon}

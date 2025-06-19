@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BiEdit, BiPlus, BiRefresh, BiTrash } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/header";
 import RequestTable from "../../components/tables/request-table";
 import { requests } from "../../components/config/config";
@@ -11,6 +11,7 @@ const Request = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const requestsPerPage = 12;
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const filteredRequests = requests.filter((req) => {
     const matchPriority =
@@ -31,6 +32,10 @@ const Request = () => {
 
     return matchPriority && matchStatus && matchSearch;
   });
+
+  const handleRowDoubleClick = (request) => {
+    navigate(`/edit_request/${request.ref}`, { state: { request } });
+  };
 
   const indexOfLastRequest = currentPage * requestsPerPage;
   const indexOfFirstRequest = indexOfLastRequest - requestsPerPage;
@@ -189,6 +194,7 @@ const Request = () => {
         <RequestTable
           currentRequests={currentRequests}
           searchQuery={searchQuery}
+          onRowDoubleClick={handleRowDoubleClick}
         />
 
         {/* Pagination (Static Example) */}
