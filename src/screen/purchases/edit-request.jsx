@@ -85,7 +85,7 @@ const EditRequest = () => {
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       {/* Sidebar */}
-      <div className="w-[200px] ">
+      <div className="w-[240px] ">
         <Sidebar className="h-full" />
       </div>
 

@@ -15,6 +15,7 @@ import SamplePDF from "./components/pdf/samplepdf";
 import EditRequest from "./screen/purchases/edit-request";
 import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
+import AccountClassesPage from "./screen/finance/account-classes";
 
 function App() {
   return (
@@ -37,7 +38,12 @@ function App() {
         >
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="request" element={<Request />} />
-          <Route path="create_request" element={<CreateRequest />} />
+          <Route path="purchases/create_request" element={<CreateRequest />} />
+          <Route
+            path="finance/account_class"
+            element={<AccountClassesPage />}
+          />
+          <Route path="dashboard" element={<Dashboard />} />
 
           <Route path="inventory" element={<Inventory />} />
         </Route>

@@ -1,93 +1,124 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { sidebarItems } from "./config/config";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  MdDashboard,
+  MdInventory,
+  MdAttachMoney,
+  MdShoppingCart,
+  MdReport,
+  MdSettings,
+  MdLogout,
+} from "react-icons/md";
+import { panelActions, sidebarConfig } from "./config/config";
+import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
-  const handleLogout = () => {
-    localStorage.clear();
-    window.location.href = "/login"; // or use navigate("/login")
+  const [activePanel, setActivePanel] = useState(null);
+  const wrapperRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleMenuClick = (menu) => {
+    if (menu !== activePanel) {
+      setActivePanel(menu);
+    }
   };
 
-  return (
-    <div className="flex flex-col w-48 min-h-screen">
-      <div className="flex h-full min-h-[740px] flex-col justify-between bg-slate-50 border p-4">
-        <div className="flex flex-col">
-          <div className="flex justify-center items-center">
-            <NavLink to="/home">
-              <img
-                src="/OCSI Logo.png"
-                alt="Logo"
-                className="w-32 h-24 object-contain"
-              />
-            </NavLink>
-          </div>
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setActivePanel(null);
+      }
+    };
 
-          <div className="flex flex-col gap-2">
-            {sidebarItems.map((item) =>
-              item.to ? (
-                <NavLink
-                  key={item.label}
-                  to={item.to}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-3 py-2 rounded-lg transition ${
-                      isActive ? "bg-red-100" : ""
-                    }`
-                  }
-                >
-                  <div className="text-[#0d141c]">{item.icon}</div>
-                  <p className="text-[#0d141c] text-sm font-medium leading-normal">
-                    {item.label}
-                  </p>
-                </NavLink>
-              ) : (
-                <button
-                  key={item.label}
-                  onClick={handleLogout}
-                  className="flex items-center gap-3 px-3 py-2 rounded-lg transition text-[#0d141c] hover:bg-[#e7edf4] mt-8 "
-                  style={{ background: "none", border: "none" }}
-                >
-                  <div className="font-bold text-red-600">{item.icon}</div>
-                  <p className="text-sm font-semibold leading-normal text-red-600">
-                    {item.label}
-                  </p>
-                </button>
-              )
-            )}
-          </div>
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={wrapperRef} className="flex">
+      {/* Sidebar */}
+      <nav className="space-y-1 bg-gray-200 font-roboto min-h-screen w-56 h-full z-20">
+        <div className="flex justify-center items-center">
+          <NavLink to="/home">
+            <img
+              src="/OCSI Logo.png"
+              alt="Logo"
+              className="w-32 h-24 object-contain"
+            />
+          </NavLink>
         </div>
-        <div className="flex flex-col gap-4">
-          <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0c7ff2] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]">
-            <span className="truncate">New</span>
-          </button>
-          <div className="flex flex-col gap-1">
-            <NavLink
-              to="/help"
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2 rounded-lg transition ${
-                  isActive ? "bg-[#e7edf4]" : ""
-                }`
-              }
-            >
-              <div className="text-[#0d141c]">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24px"
-                  height="24px"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                >
-                  <path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
-                </svg>
+        <div className="flex-grow flex flex-col justify-center space-y-1 px-2">
+          {sidebarConfig.map((item) => (
+            <SidebarItem
+              key={item.label}
+              icon={item.icon}
+              label={item.label}
+              onClick={() => handleMenuClick(item.label)}
+              active={activePanel === item.label}
+            />
+          ))}
+        </div>
+      </nav>
+
+      {/* Right Panel */}
+      {/* Right Panel */}
+      {activePanel && (
+        <div className="ml-[14em] flex-grow bg-white p-6 h-screen overflow-y-auto w-[32em] fixed z-50 border-r-2">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-semibold">{activePanel}</h2>
+          </div>
+          <div className="space-x-2 mb-6 ">
+            {(panelActions[activePanel] || []).map((action) => (
+              <button
+                key={action.label}
+                onClick={() => {
+                  navigate(action.path);
+                  setActivePanel(null);
+                }}
+                className="bg-yellow-600 text-white px-3 py-3 text-sm rounded hover:bg-yellow-700 "
+              >
+                {action.label}
+              </button>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {Object.entries(
+              sidebarConfig.find((item) => item.label === activePanel)
+                ?.submenu || {}
+            ).map(([section, items]) => (
+              <div key={section}>
+                <h3 className="font-bold text-gray-700 mb-2">{section}</h3>
+                <ul className="space-y-4">
+                  {items.map(({ label, path }) => (
+                    <li key={label}>
+                      <Link
+                        onClick={() => setActivePanel(null)}
+                        to={path}
+                        className="text-yellow-600 hover:underline text-sm block"
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="text-[#0d141c] text-sm font-medium leading-normal">
-                Help and Docs
-              </p>
-            </NavLink>
+            ))}
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
+
+const SidebarItem = ({ icon, label, onClick, active }) => (
+  <button
+    onClick={onClick}
+    className={`w-full flex items-center px-4 py-2 rounded-lg text-gray-700  ${
+      active ? "bg-white " : ""
+    }`}
+  >
+    <span className="mr-3 text-xl">{icon}</span>
+    {label}
+  </button>
+);
 
 export default Sidebar;

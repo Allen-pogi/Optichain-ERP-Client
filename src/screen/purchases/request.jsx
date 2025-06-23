@@ -80,7 +80,7 @@ const Request = () => {
             <button className="p-2 rounded-full hover:bg-red-600 hover:text-white focus:outline-none text-black">
               <BiRefresh className="inline-block text-2xl" />
             </button>
-            <Link to="/home/create_request">
+            <Link to="/home/purchases/create_request">
               <button className="p-2 rounded-full hover:bg-red-600 hover:text-white focus:outline-none text-black">
                 <BiPlus className="inline-block text-2xl" />
               </button>
