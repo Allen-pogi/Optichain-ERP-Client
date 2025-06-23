@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   return (
     <div className="flex flex-col w-48 min-h-screen">
-      <div className="flex h-full min-h-[700px] flex-col justify-between bg-slate-50 border p-4">
+      <div className="flex h-full min-h-[740px] flex-col justify-between bg-slate-50 border p-4">
         <div className="flex flex-col">
           <div className="flex justify-center items-center">
             <NavLink to="/home">

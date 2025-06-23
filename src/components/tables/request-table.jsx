@@ -19,12 +19,17 @@ const highlightMatch = (text, query) => {
 
 const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
   return (
-    <div className="overflow-x-auto ">
+    <div className="overflow-x-auto h-[]">
       <table className="min-w-full divide-y divide-gray-200 ">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-8 py-2"></th>
-            <th className="px-3 py-1 w-8"></th>
+            <th className="px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-8 py-2">
+              Files
+            </th>
+            <th className="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Notes
+            </th>
+
             <th className="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Ref. Nbr.
             </th>
@@ -52,7 +57,7 @@ const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
             <th className="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Description
             </th>
-            <th className="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-2 py-1 text-left text-xs font-medium w-24 text-gray-500 uppercase tracking-wider">
               Est. Ext. Cost
             </th>
             <th className="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -68,7 +73,7 @@ const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
             <tr
               key={req.ref}
               onDoubleClick={() => onRowDoubleClick(req)}
-              className="hover:bg-gray-50"
+              className="hover:bg-gray-100"
             >
               <td className="px-3 whitespace-nowrap">
                 <span className="material-icons text-gray-400 text-base">
@@ -113,7 +118,7 @@ const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
               >
                 {highlightMatch(req.description, searchQuery)}
               </td>
-              <td className="px-2 py-1 text-sm text-gray-700 text-center">
+              <td className="px-2 py-1 text-sm text-gray-700 text-left">
                 {req.extCost}
               </td>
               <td className="px-2 py-1 text-sm text-gray-700 text-left">PHP</td>

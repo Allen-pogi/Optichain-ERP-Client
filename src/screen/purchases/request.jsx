@@ -198,7 +198,7 @@ const Request = () => {
         />
 
         {/* Pagination (Static Example) */}
-        <div className="px-6 py-3 flex items-center justify-between border-t border-gray-200">
+        <div className="px-6 py-21 flex items-center justify-between border-t border-gray-200">
           <div className="text-sm text-gray-600">
             Showing {indexOfFirstRequest + 1} to{" "}
             {Math.min(indexOfLastRequest, filteredRequests.length)} of{" "}

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FaEnvelope, FaLock, FaUser, FaUserAlt } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { API_BASE_URL } from "../components/config/config";
+import { API_BASE_URL } from "../../components/config/config";
 
-const Login = () => {
-  const navigate = useNavigate(); // <-- initialize navigate
+const Register = () => {
   const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -23,25 +25,18 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${API_BASE_URL}/auth/login`, formData);
-      const { token, user } = res.data;
-      console.log(token); // JWT token
-      console.log(user);
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
-      setMessage(`Welcome, ${user.firstname}!`);
-      navigate("/home"); // <-- redirect to /home
-      // You can also save token to localStorage here if needed
+      const res = await axios.post(`${API_BASE_URL}/auth/register`, formData);
+      setMessage(res.data.message);
     } catch (err) {
-      console.error("Login error:", err.response?.data || err.message);
-      toast.error(err.response?.data?.message || "Login failed");
+      console.error("Registration error:", err.response?.data || err.message);
+      toast.error(err.response?.data?.message || "Registration failed");
     }
   };
 
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center bg-white"
-      style={{ backgroundImage: "url('/backgcool2.svg')" }} // Place your image in public/background.jpg
+      style={{ backgroundImage: "url('/wave11.svg')" }} // Place your image in public/background.jpg
     >
       <div className="absolute inset-0 bg-black opacity-5 z-0"></div>
       <div className="flex bg-white  shadow-lg border-black rounded-xl p-0 w-full max-w-5xl z-10">
@@ -49,7 +44,7 @@ const Login = () => {
         <div
           className="flex flex-col justify-center items-center w-1/2 p-8 border-r border-gray-200 rounded-l-xl"
           style={{
-            backgroundImage: "url('/background.webp')",
+            backgroundImage: "url('/backgroundd.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -60,21 +55,54 @@ const Login = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-8 w-full max-w-lg p-8 border-black border-top"
+          className="space-y-6 w-full max-w-lg p-8 border-black border-top"
         >
           {/* Name */}
-          <h1 className="text-3xl font-bold text-red-700 mb-2 justify-center flex">
+          <h1 className="text-3xl font-bold mb-2 justify-center flex">
             <span className="text-black">Welcome to </span>
-            <span className="text-red-700 ml-2">Optichain</span>{" "}
+            <span className="text-red-700 ml-2">Optichain</span>
           </h1>
           <p className="text-xl font-bold text-black mb-4 justify-center flex">
-            Log In
+            Sign Up
           </p>
           {message && (
             <div className="mb-4 text-center text-sm text-red-600">
               {message}
             </div>
           )}
+
+          <div className="relative">
+            <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <input
+              name="firstname"
+              placeholder="First Name"
+              onChange={handleChange}
+              required
+              className="w-full pl-10 pr-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700"
+            />
+          </div>
+
+          <div className="relative">
+            <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <input
+              name="lastname"
+              placeholder="Last Name"
+              onChange={handleChange}
+              required
+              className="w-full pl-10 pr-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700"
+            />
+          </div>
+
+          <div className="relative">
+            <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <input
+              name="username"
+              placeholder="Username"
+              onChange={handleChange}
+              required
+              className="w-full pl-10 pr-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-700"
+            />
+          </div>
 
           {/* Email */}
           <div className="relative">
@@ -106,12 +134,15 @@ const Login = () => {
             type="submit"
             className="w-full bg-red-700 text-white py-2 rounded-3xl font-semibold"
           >
-            Login
+            Register
           </button>
 
           <div className="text-center mt-4">
-            <Link to="/" className="text-red-700 hover:underline font-medium">
-              <span className="text-black">Don't have an account? </span>
+            <Link
+              to="/login"
+              className="text-red-700 hover:underline font-medium"
+            >
+              <span className="text-black">Already have an account? </span>
               <span className="text-red-700">Click Here</span>
             </Link>
           </div>
@@ -121,4 +152,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

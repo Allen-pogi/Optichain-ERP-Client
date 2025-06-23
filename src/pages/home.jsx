@@ -2,10 +2,8 @@ import React from "react";
 import Sidebar from "../components/sidebar";
 import { Outlet, useLocation } from "react-router-dom";
 
-
-
 const Home = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem("user"));
   const location = useLocation();
 
   // Show this only on /home (not on nested routes like /home/dashboard)
@@ -13,7 +11,7 @@ const Home = () => {
 
   return (
     <div
-      className=" flex min-h-screen flex-col bg-white overflow-x-hidden"
+      className=" flex  h-screen overflow-hidden flex-col bg-white overflow-x-hidden"
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       <div className="flex h-full flex-col">
@@ -41,4 +39,3 @@ const Home = () => {
 };
 
 export default Home;
-

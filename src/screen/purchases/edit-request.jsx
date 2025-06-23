@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 import Header from "../../components/header";
 import { DUMMY_ITEMS, requests } from "../../components/config/config";
@@ -65,13 +65,30 @@ const EditRequest = () => {
 
   const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
 
+  const navigate = useNavigate();
+
+  const handleSave = () => {
+    const updatedExtCost = totalExtCost.toFixed(2);
+
+    // 1. Find the original request in dummy data and update it
+    const index = requests.findIndex((r) => r.ref === request.ref);
+    if (index !== -1) {
+      requests[index].extCost = updatedExtCost;
+    }
+
+    // 2. Navigate back to request list page
+    navigate("/home/request");
+  };
   return (
     <div
-      className="flex h- bg-gray-100 font-roboto  "
+      className="flex h- bg-gray-100 font-roboto    h-screen overflow-hidden "
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       {/* Sidebar */}
-      <Sidebar />
+      <div className="w-[200px] ">
+        <Sidebar className="h-full" />
+      </div>
+
       <div className="bg-gray-100 h-screen w-full flex flex-col font-roboto overflow-hidden">
         {/* Header */}
 
@@ -128,7 +145,10 @@ const EditRequest = () => {
               {/* Toolbar */}
               <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
                 <div className="flex items-center space-x-2">
-                  <button className="bg-red-600 text-white px-4 py-2 rounded-md shadow-sm  flex items-center space-x-1 text-sm">
+                  <button
+                    onClick={handleSave}
+                    className="bg-red-600 text-white px-4 py-2 rounded-md shadow-sm  flex items-center space-x-1 text-sm"
+                  >
                     <span className="material-icons text-lg">save</span>
                     <span>SAVE &amp; CLOSE</span>
                   </button>
