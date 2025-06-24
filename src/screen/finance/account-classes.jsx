@@ -47,7 +47,7 @@ const AccountClassesPage = () => {
 
   return (
     <div
-      className="flex flex-col h-screen font-roboto bg-slate-50"
+      className="flex flex-col h-screen  bg-slate-50"
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       <Header />
@@ -153,9 +153,9 @@ const AccountClassesPage = () => {
                           </span>
                         </button>
                       </td>
-                      <td className="px-4 py-2 text-xs">{row.id}</td>
-                      <td className="px-4 py-2 text-xs">{row.type}</td>
-                      <td className="px-4 py-2 text-xs">{row.desc}</td>
+                      <td className="px-4 py-2 text-sm">{row.id}</td>
+                      <td className="px-4 py-2 text-sm">{row.type}</td>
+                      <td className="px-4 py-2 text-sm">{row.desc}</td>
                     </tr>
                   ))}
 

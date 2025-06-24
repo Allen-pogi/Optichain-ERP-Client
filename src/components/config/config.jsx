@@ -1,4 +1,7 @@
 import React from "react";
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
+import { FaRegStar } from "react-icons/fa";
+import { IoStarOutline } from "react-icons/io5";
 import {
   MdDashboard,
   MdInventory,
@@ -6,7 +9,7 @@ import {
   MdShoppingCart,
   MdReport,
   MdSettings,
-  MdLogout,
+  MdNoteAdd,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
@@ -28,8 +31,8 @@ export const panelActions = {
 
 export const sidebarConfig = [
   {
-    label: "Dashboard",
-    icon: <MdDashboard />,
+    label: "Favorites",
+    icon: <IoStarOutline />,
     path: "/home/dashboard",
   },
   {
@@ -103,8 +106,8 @@ export const sidebarConfig = [
     },
   },
   {
-    label: "Purchases",
-    icon: <MdShoppingCart />,
+    label: "Sales Order",
+    icon: <MdNoteAdd />,
     submenu: {
       Profiles: [
         { label: "Request", path: "/home/request" },
@@ -117,6 +120,56 @@ export const sidebarConfig = [
     },
   },
   {
+    label: "Payables",
+    icon: <CiCircleMinus />,
+    submenu: {
+      Profiles: [
+        { label: "Request", path: "/home/request" },
+        {
+          label: "New Purchase Request",
+          path: "/home/purchases/create_request",
+        },
+      ],
+      Inquiries: [{ label: "Vendor Details", path: "/home/purchases/details" }],
+    },
+  },
+  {
+    label: "Receivables",
+    icon: <CiCirclePlus />,
+    submenu: {
+      Profiles: [
+        { label: "Request", path: "/home/request" },
+        {
+          label: "New Purchase Request",
+          path: "/home/purchases/create_request",
+        },
+      ],
+      Inquiries: [{ label: "Vendor Details", path: "/home/purchases/details" }],
+    },
+  },
+  {
+    label: "Purchases",
+    icon: <MdShoppingCart />,
+    submenu: {
+      Profiles: [
+        { label: "Request", path: "/home/request" },
+        {
+          label: "New Purchase Request",
+          path: "/home/purchases/create_request",
+        },
+      ],
+      Inquiries: [{ label: "Vendor Details", path: "/home/purchases/details" }],
+      Preferences: [
+        { label: "Item Class", path: "/home/inventory/item_class" },
+        {
+          label: "New Purchase Request",
+          path: "/home/purchases/create_request",
+        },
+      ],
+    },
+  },
+
+  {
     label: "Reports",
     icon: <MdReport />,
     path: "/home/reports",
@@ -126,10 +179,108 @@ export const sidebarConfig = [
     icon: <MdSettings />,
     path: "/home/settings",
   },
+];
+
+export const DUMMY_ITEM_CLASSES = [
   {
-    label: "Log Out",
-    icon: <MdLogout />,
-    path: "/logout",
+    classID: "MHE",
+    description: "Material Handling Equipment",
+    stockItem: true,
+    allowNegativeQty: true,
+    itemType: "Inventory",
+    valuationMethod: "Standard",
+    planningMethod: "Inventory Replenishment",
+    taxCategory: "IMPGOODS",
+    postingClass: "MHE-POST",
+    lotSerialClass: "",
+    priceClass: "",
+    availabilityCalculation: "",
+    countryOrigin: "",
+    undershiThreshold: 0,
+    ownershipThreshold: 0,
+    baseUnit: "PIECE",
+    salesUnit: "PIECE",
+    purchaseUnit: "PIECE",
+  },
+  {
+    classID: "ELC",
+    description: "Electrical Components",
+    stockItem: true,
+    allownNegativeQty: true,
+    itemType: "Inventory",
+    valuationMethod: "FIFO",
+    planningMethod: "Min/Max",
+    taxCategory: "ELECTAX",
+    postingClass: "ELC-POST",
+    lotSerialClass: "LOT-ELC",
+    priceClass: "STANDARD",
+    availabilityCalculation: "On Hand",
+    countryOrigin: "PH",
+    undershiThreshold: 5,
+    ownershipThreshold: 10,
+    baseUnit: "PCS",
+    salesUnit: "PCS",
+    purchaseUnit: "BOX",
+  },
+  {
+    classID: "CNS",
+    description: "Construction Supplies",
+    stockItem: true,
+    allownNegativeQty: false,
+    itemType: "Non-Inventory",
+    valuationMethod: "Moving Average",
+    planningMethod: "Reorder Point",
+    taxCategory: "CIVIL",
+    postingClass: "CNS-POST",
+    lotSerialClass: "LOT-CNS",
+    priceClass: "BULK",
+    availabilityCalculation: "Projected",
+    countryOrigin: "CN",
+    undershiThreshold: 2,
+    ownershipThreshold: 15,
+    baseUnit: "BAG",
+    salesUnit: "BAG",
+    purchaseUnit: "PALLET",
+  },
+  {
+    classID: "OFF",
+    description: "Office Supplies",
+    stockItem: false,
+    allownNegativeQty: true,
+    itemType: "Service",
+    valuationMethod: "None",
+    planningMethod: "Manual",
+    taxCategory: "SERVICES",
+    postingClass: "OFF-POST",
+    lotSerialClass: "",
+    priceClass: "",
+    availabilityCalculation: "None",
+    countryOrigin: "",
+    undershiThreshold: 0,
+    ownershipThreshold: 0,
+    baseUnit: "SET",
+    salesUnit: "SET",
+    purchaseUnit: "SET",
+  },
+  {
+    classID: "ITM",
+    description: "IT Equipment",
+    stockItem: true,
+    allownNegativeQty: false,
+    itemType: "Inventory",
+    valuationMethod: "Standard",
+    planningMethod: "Forecast",
+    taxCategory: "ELECIMP",
+    postingClass: "ITM-POST",
+    lotSerialClass: "SERIAL-IT",
+    priceClass: "TECH",
+    availabilityCalculation: "Available for Sale",
+    countryOrigin: "US",
+    undershiThreshold: 1,
+    ownershipThreshold: 5,
+    baseUnit: "UNIT",
+    salesUnit: "UNIT",
+    purchaseUnit: "BOX",
   },
 ];
 

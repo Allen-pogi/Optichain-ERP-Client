@@ -53,7 +53,7 @@ const Request = () => {
   const totalPages = Math.ceil(filteredRequests.length / requestsPerPage);
 
   return (
-    <div className="bg-white min-h-screen font-roboto">
+    <div className="bg-white min-h-screen ">
       <Header />
       <header className="flex justify-between items-center  border-gray-300">
         <div className="container px-4  flex items-center justify-between">

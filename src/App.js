@@ -16,6 +16,7 @@ import EditRequest from "./screen/purchases/edit-request";
 import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
 import AccountClassesPage from "./screen/finance/account-classes";
+import ItemClassesPage from "./screen/inventory/item-classes";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             path="finance/account_class"
             element={<AccountClassesPage />}
           />
+          <Route path="inventory/item_class" element={<ItemClassesPage />} />
           <Route path="dashboard" element={<Dashboard />} />
 
           <Route path="inventory" element={<Inventory />} />

@@ -86,14 +86,16 @@ const Sidebar = () => {
                 ?.submenu || {}
             ).map(([section, items]) => (
               <div key={section}>
-                <h3 className="font-bold text-gray-700 mb-2">{section}</h3>
+                <h3 className="font-bold text-gray-700 text-lg mb-2">
+                  {section}
+                </h3>
                 <ul className="space-y-4">
                   {items.map(({ label, path }) => (
                     <li key={label}>
                       <Link
                         onClick={() => setActivePanel(null)}
                         to={path}
-                        className="text-yellow-600 hover:underline text-sm block"
+                        className="text-yellow-600 hover:underline text-md block"
                       >
                         {label}
                       </Link>
