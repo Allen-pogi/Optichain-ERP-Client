@@ -34,150 +34,352 @@ export const sidebarConfig = [
     label: "Favorites",
     icon: <IoStarOutline />,
     path: "/home/dashboard",
+    roles: ["admin", "viewer", "finance", "purchaser"],
   },
   {
     label: "Inventory",
     icon: <MdInventory />,
+    roles: ["admin", "inventory"],
     submenu: {
       Profiles: [
-        { label: "Master Financial Calendar", path: "/home/finance/calendar" },
-        { label: "Recurring Transactions", path: "/home/finance/recurring" },
-        { label: "Chart of Accounts", path: "/home/finance/accounts" },
-        { label: "Subaccounts", path: "/home/finance/subaccounts" },
+        {
+          label: "Master Financial Calendar",
+          path: "/home/finance/calendar",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Recurring Transactions",
+          path: "/home/finance/recurring",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Chart of Accounts",
+          path: "/home/finance/accounts",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Subaccounts",
+          path: "/home/finance/subaccounts",
+          roles: ["admin", "finance"],
+        },
       ],
       Processes: [
-        { label: "Manage Financial Periods", path: "/home/finance/periods" },
-        { label: "Validate Account History", path: "/home/finance/history" },
+        {
+          label: "Manage Financial Periods",
+          path: "/home/finance/periods",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Validate Account History",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
       ],
       Budgets: [
-        { label: "Budgets", path: "/home/finance/budgets" },
-        { label: "GL Budget Edit", path: "/home/finance/budget-edit" },
+        {
+          label: "Budgets",
+          path: "/home/finance/budgets",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "GL Budget Edit",
+          path: "/home/finance/budget-edit",
+          roles: ["admin", "finance"],
+        },
       ],
       Inquiries: [
-        { label: "Account Summary", path: "/home/finance/summary" },
-        { label: "Account by Subaccount", path: "/home/finance/by-subaccount" },
-        { label: "Account by Period", path: "/home/finance/by-period" },
-        { label: "Account Details", path: "/home/finance/details" },
+        {
+          label: "Account Summary",
+          path: "/home/finance/summary",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account by Subaccount",
+          path: "/home/finance/by-subaccount",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account by Period",
+          path: "/home/finance/by-period",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account Details",
+          path: "/home/finance/details",
+          roles: ["admin", "finance", "viewer"],
+        },
       ],
       Preferences: [
-        { label: "General Ledger Preferences", path: "/home/finance/gl-prefs" },
-        { label: "Financial Year", path: "/home/finance/year" },
-        { label: "Ledgers", path: "/home/finance/ledgers" },
-        { label: "Voucher Entry Codes", path: "/home/finance/vouchers" },
-        { label: "Budget Configuration", path: "/home/finance/budget-config" },
-        { label: "Consolidation", path: "/home/finance/consolidation" },
-        { label: "Account Classes", path: "/home/finance/classes" },
+        {
+          label: "General Ledger Preferences",
+          path: "/home/finance/gl-prefs",
+          roles: ["admin"],
+        },
+        {
+          label: "Financial Year",
+          path: "/home/finance/year",
+          roles: ["admin"],
+        },
+        { label: "Ledgers", path: "/home/finance/ledgers", roles: ["admin"] },
+        {
+          label: "Voucher Entry Codes",
+          path: "/home/finance/vouchers",
+          roles: ["admin"],
+        },
+        {
+          label: "Budget Configuration",
+          path: "/home/finance/budget-config",
+          roles: ["admin"],
+        },
+        {
+          label: "Consolidation",
+          path: "/home/finance/consolidation",
+          roles: ["admin"],
+        },
+        {
+          label: "Account Classes",
+          path: "/home/finance/classes",
+          roles: ["admin"],
+        },
       ],
     },
   },
   {
     label: "Finance",
     icon: <MdAttachMoney />,
+    roles: ["admin", "finance"],
     submenu: {
+      // Same submenu structure as "Inventory"
       Profiles: [
-        { label: "Master Financial Calendar", path: "/home/finance/calendar" },
-        { label: "Recurring Transactions", path: "/home/finance/recurring" },
-        { label: "Chart of Accounts", path: "/home/finance/accounts" },
-        { label: "Subaccounts", path: "/home/finance/subaccounts" },
+        {
+          label: "Master Financial Calendar",
+          path: "/home/finance/calendar",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Recurring Transactions",
+          path: "/home/finance/recurring",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Chart of Accounts",
+          path: "/home/finance/accounts",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Subaccounts",
+          path: "/home/finance/subaccounts",
+          roles: ["admin", "finance"],
+        },
       ],
       Processes: [
-        { label: "Manage Financial Periods", path: "/home/finance/periods" },
-        { label: "Validate Account History", path: "/home/finance/history" },
+        {
+          label: "Manage Financial Periods",
+          path: "/home/finance/periods",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Validate Account History",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
       ],
       Budgets: [
-        { label: "Budgets", path: "/home/finance/budgets" },
-        { label: "GL Budget Edit", path: "/home/finance/budget-edit" },
+        {
+          label: "Budgets",
+          path: "/home/finance/budgets",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "GL Budget Edit",
+          path: "/home/finance/budget-edit",
+          roles: ["admin", "finance"],
+        },
       ],
       Inquiries: [
-        { label: "Account Summary", path: "/home/finance/summary" },
-        { label: "Account by Subaccount", path: "/home/finance/by-subaccount" },
-        { label: "Account by Period", path: "/home/finance/by-period" },
-        { label: "Account Details", path: "/home/finance/details" },
+        {
+          label: "Account Summary",
+          path: "/home/finance/summary",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account by Subaccount",
+          path: "/home/finance/by-subaccount",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account by Period",
+          path: "/home/finance/by-period",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account Details",
+          path: "/home/finance/details",
+          roles: ["admin", "finance", "viewer"],
+        },
       ],
       Preferences: [
-        { label: "General Ledger Preferences", path: "/home/finance/gl-prefs" },
-        { label: "Financial Year", path: "/home/finance/year" },
-        { label: "Ledgers", path: "/home/finance/ledgers" },
-        { label: "Voucher Entry Codes", path: "/home/finance/vouchers" },
-        { label: "Budget Configuration", path: "/home/finance/budget-config" },
-        { label: "Consolidation", path: "/home/finance/consolidation" },
-        { label: "Account Classes", path: "/home/finance/account_class" },
+        {
+          label: "General Ledger Preferences",
+          path: "/home/finance/gl-prefs",
+          roles: ["admin"],
+        },
+        {
+          label: "Financial Year",
+          path: "/home/finance/year",
+          roles: ["admin"],
+        },
+        { label: "Ledgers", path: "/home/finance/ledgers", roles: ["admin"] },
+        {
+          label: "Voucher Entry Codes",
+          path: "/home/finance/vouchers",
+          roles: ["admin"],
+        },
+        {
+          label: "Budget Configuration",
+          path: "/home/finance/budget-config",
+          roles: ["admin"],
+        },
+        {
+          label: "Consolidation",
+          path: "/home/finance/consolidation",
+          roles: ["admin"],
+        },
+        {
+          label: "Account Classes",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
       ],
     },
   },
   {
     label: "Sales Order",
     icon: <MdNoteAdd />,
+    roles: ["admin", "purchaser"],
     submenu: {
       Profiles: [
-        { label: "Request", path: "/home/request" },
+        {
+          label: "Request",
+          path: "/home/request",
+          roles: ["admin", "purchaser"],
+        },
         {
           label: "New Purchase Request",
           path: "/home/purchases/create_request",
+          roles: ["admin", "purchaser"],
         },
       ],
-      Inquiries: [{ label: "Vendor Details", path: "/home/purchases/details" }],
+      Inquiries: [
+        {
+          label: "Vendor Details",
+          path: "/home/purchases/details",
+          roles: ["admin", "purchaser", "viewer"],
+        },
+      ],
     },
   },
   {
     label: "Payables",
     icon: <CiCircleMinus />,
+    roles: ["admin", "accounting"],
     submenu: {
       Profiles: [
-        { label: "Request", path: "/home/request" },
+        {
+          label: "Request",
+          path: "/home/request",
+          roles: ["admin", "accounting"],
+        },
         {
           label: "New Purchase Request",
           path: "/home/purchases/create_request",
+          roles: ["admin", "accounting"],
         },
       ],
-      Inquiries: [{ label: "Vendor Details", path: "/home/purchases/details" }],
+      Inquiries: [
+        {
+          label: "Vendor Details",
+          path: "/home/purchases/details",
+          roles: ["admin", "accounting", "viewer"],
+        },
+      ],
     },
   },
   {
     label: "Receivables",
     icon: <CiCirclePlus />,
+    roles: ["admin", "accounting"],
     submenu: {
       Profiles: [
-        { label: "Request", path: "/home/request" },
+        {
+          label: "Request",
+          path: "/home/request",
+          roles: ["admin", "accounting"],
+        },
         {
           label: "New Purchase Request",
           path: "/home/purchases/create_request",
+          roles: ["admin", "accounting"],
         },
       ],
-      Inquiries: [{ label: "Vendor Details", path: "/home/purchases/details" }],
+      Inquiries: [
+        {
+          label: "Vendor Details",
+          path: "/home/purchases/details",
+          roles: ["admin", "accounting", "viewer"],
+        },
+      ],
     },
   },
   {
     label: "Purchases",
     icon: <MdShoppingCart />,
+    roles: ["admin", "finance"],
     submenu: {
       Profiles: [
-        { label: "Request", path: "/home/request" },
+        {
+          label: "Request",
+          path: "/home/request",
+          roles: ["admin", "finance"],
+        },
         {
           label: "New Purchase Request",
           path: "/home/purchases/create_request",
+          roles: ["admin", "purchasinghead", "purchaser"],
         },
       ],
-      Inquiries: [{ label: "Vendor Details", path: "/home/purchases/details" }],
+      Inquiries: [
+        {
+          label: "Vendor Details",
+          path: "/home/purchases/details",
+          roles: ["admin", "purchasinghead", "viewer"],
+        },
+      ],
       Preferences: [
-        { label: "Item Class", path: "/home/inventory/item_class" },
+        {
+          label: "Item Class",
+          path: "/home/inventory/item_class",
+          roles: ["admin", "inventory"],
+        },
         {
           label: "New Purchase Request",
           path: "/home/purchases/create_request",
+          roles: ["admin", "purchaser"],
         },
       ],
     },
   },
-
   {
     label: "Reports",
     icon: <MdReport />,
     path: "/home/reports",
+    roles: ["admin", "viewer", "finance"],
   },
   {
     label: "Settings",
     icon: <MdSettings />,
     path: "/home/settings",
+    roles: ["admin"],
   },
 ];
 
@@ -212,12 +414,13 @@ export const DUMMY_ITEM_CLASSES = [
     planningMethod: "Min/Max",
     taxCategory: "ELECTAX",
     postingClass: "ELC-POST",
+    postCostToExpenses: "Purchases",
     lotSerialClass: "LOT-ELC",
     priceClass: "STANDARD",
     availabilityCalculation: "On Hand",
     countryOrigin: "PH",
     undershiThreshold: 5,
-    ownershipThreshold: 10,
+    overshipThreshold: 10,
     baseUnit: "PCS",
     salesUnit: "PCS",
     purchaseUnit: "BOX",
@@ -237,7 +440,7 @@ export const DUMMY_ITEM_CLASSES = [
     availabilityCalculation: "Projected",
     countryOrigin: "CN",
     undershiThreshold: 2,
-    ownershipThreshold: 15,
+    overshipThreshold: 15,
     baseUnit: "BAG",
     salesUnit: "BAG",
     purchaseUnit: "PALLET",
@@ -257,7 +460,7 @@ export const DUMMY_ITEM_CLASSES = [
     availabilityCalculation: "None",
     countryOrigin: "",
     undershiThreshold: 0,
-    ownershipThreshold: 0,
+    overshipThreshold: 0,
     baseUnit: "SET",
     salesUnit: "SET",
     purchaseUnit: "SET",
@@ -277,7 +480,7 @@ export const DUMMY_ITEM_CLASSES = [
     availabilityCalculation: "Available for Sale",
     countryOrigin: "US",
     undershiThreshold: 1,
-    ownershipThreshold: 5,
+    overshipThreshold: 5,
     baseUnit: "UNIT",
     salesUnit: "UNIT",
     purchaseUnit: "BOX",

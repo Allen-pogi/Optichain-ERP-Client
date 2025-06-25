@@ -1,7 +1,6 @@
 import React from "react";
-import { DUMMY_ITEM_CLASSES } from "./config";
 
-const ItemClassList = ({ onSelect }) => {
+const ItemClassList = ({ items, onSelect, onAddNew, onSave }) => {
   return (
     <div className="w-1/4 bg-white rounded-lg shadow p-4 overflow-y-auto">
       {/* Header */}
@@ -15,16 +14,19 @@ const ItemClassList = ({ onSelect }) => {
       {/* Toolbar */}
       <div className="flex items-center space-x-1 mb-2 text-gray-600">
         <button className="p-1 hover:bg-gray-200 rounded">
-          <span className="material-icons text-lg">description</span>
+          <span className="material-icons text-lg" onClick={onSave}>
+            save
+          </span>
         </button>
-        <button className="p-1 hover:bg-gray-200 rounded">
+
+        <button className="p-1 hover:bg-gray-200 rounded" onClick={onAddNew}>
           <span className="material-icons text-lg">add</span>
         </button>
         <button className="p-1 hover:bg-gray-200 rounded">
           <span className="material-icons text-lg">delete</span>
         </button>
         <button className="p-1 hover:bg-gray-200 rounded">
-          <span className="material-icons text-lg">content_copy</span>
+          <span className="material-icons text-lg">description</span>
         </button>
         <span className="text-gray-300">|</span>
         <button className="p-1 hover:bg-gray-200 rounded">
@@ -44,7 +46,7 @@ const ItemClassList = ({ onSelect }) => {
 
       {/* Scrollable Item List */}
       <div className="text-sm max-h-[calc(100vh-150px)] overflow-y-auto pr-2 space-y-1">
-        {DUMMY_ITEM_CLASSES.map((item, i) => (
+        {items.map((item, i) => (
           <div
             key={i}
             className="flex items-center cursor-pointer hover:bg-gray-100 p-1 rounded"

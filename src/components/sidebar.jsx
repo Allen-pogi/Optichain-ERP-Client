@@ -10,8 +10,11 @@ import {
 } from "react-icons/md";
 import { panelActions, sidebarConfig } from "./config/config";
 import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "./auth/useAuth";
 
 const Sidebar = () => {
+  const user = useAuth();
+  const role = user?.role || "guest"; // Default to guest if no user
   const [activePanel, setActivePanel] = useState(null);
   const wrapperRef = useRef(null);
   const navigate = useNavigate();
@@ -26,6 +29,8 @@ const Sidebar = () => {
     const handleClickOutside = (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setActivePanel(null);
+
+        console.log(user.role);
       }
     };
 
@@ -46,16 +51,18 @@ const Sidebar = () => {
             />
           </NavLink>
         </div>
-        <div className="flex-grow flex flex-col justify-center space-y-1 px-2">
-          {sidebarConfig.map((item) => (
-            <SidebarItem
-              key={item.label}
-              icon={item.icon}
-              label={item.label}
-              onClick={() => handleMenuClick(item.label)}
-              active={activePanel === item.label}
-            />
-          ))}
+        <div className="flex-grow flex flex-col justify-center space-y-1 px-2 text">
+          {sidebarConfig
+            .filter((item) => item.roles.includes(role)) // 👈 filter by role
+            .map((item) => (
+              <SidebarItem
+                key={item.label}
+                icon={item.icon}
+                label={item.label}
+                onClick={() => handleMenuClick(item.label)}
+                active={activePanel === item.label}
+              />
+            ))}
         </div>
       </nav>
 
@@ -90,17 +97,19 @@ const Sidebar = () => {
                   {section}
                 </h3>
                 <ul className="space-y-4">
-                  {items.map(({ label, path }) => (
-                    <li key={label}>
-                      <Link
-                        onClick={() => setActivePanel(null)}
-                        to={path}
-                        className="text-yellow-600 hover:underline text-md block"
-                      >
-                        {label}
-                      </Link>
-                    </li>
-                  ))}
+                  {items
+                    .filter((entry) => entry.roles.includes(role)) // 👈 filter submenu items
+                    .map(({ label, path }) => (
+                      <li key={label}>
+                        <Link
+                          onClick={() => setActivePanel(null)}
+                          to={path}
+                          className="text-yellow-600 hover:underline text-md block"
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               </div>
             ))}

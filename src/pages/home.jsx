@@ -1,25 +1,23 @@
 import React from "react";
 import Sidebar from "../components/sidebar";
 import { Outlet, useLocation } from "react-router-dom";
+import useAuth from "../components/auth/useAuth";
 
 const Home = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
   const location = useLocation();
+  const user = useAuth(); // 👈 single-line
 
-  // Show this only on /home (not on nested routes like /home/dashboard)
   const isHomeRoot = location.pathname === "/home";
 
   return (
     <div
-      className=" flex  h-screen overflow-hidden flex-col bg-white overflow-x-hidden min-h-screen relative z-0"
+      className="flex h-screen overflow-hidden flex-col bg-white overflow-x-hidden min-h-screen relative z-0"
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       <div className="flex h-full flex-col">
-        <div className=" flex  justify-center ">
-          {/* Sidebar */}
-          <Sidebar />
-          {/* Main Content */}
-          <div className="flex flex-col min-w-[82em]  flex-1 ">
+        <div className="flex justify-center">
+          <Sidebar user={user} />
+          <div className="flex flex-col min-w-[82em] flex-1">
             {isHomeRoot && (
               <div className="flex flex-col items-center justify-center h-full">
                 <h2 className="text-2xl font-bold mb-2">

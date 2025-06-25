@@ -17,6 +17,7 @@ import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
 import AccountClassesPage from "./screen/finance/account-classes";
 import ItemClassesPage from "./screen/inventory/item-classes";
+import AdminPanel from "./pages/admin/admin";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path="PDF" element={<SamplePDF />} />
         <Route path="files" element={<FileList />} />
         <Route path="/edit_request/:ref" element={<EditRequest />} />
+        <Route path="/admin" element={<AdminPanel />} />
+
         <Route
           path="/home/*"
           element={
