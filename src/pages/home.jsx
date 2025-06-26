@@ -15,19 +15,9 @@ const Home = () => {
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       <div className="flex h-full flex-col">
-        <div className="flex justify-center">
+        <div className="flex justify-start">
           <Sidebar user={user} />
-          <div className="flex flex-col min-w-[82em] flex-1">
-            {isHomeRoot && (
-              <div className="flex flex-col items-center justify-center h-full">
-                <h2 className="text-2xl font-bold mb-2">
-                  Welcome, {user?.firstname || "User"}!
-                </h2>
-                <p className="text-gray-600 text-lg">
-                  Select a menu item on the left to get started.
-                </p>
-              </div>
-            )}
+          <div className="w-full justify-start flex overflow-hidden">
             <Outlet />
           </div>
         </div>

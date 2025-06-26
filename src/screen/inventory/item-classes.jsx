@@ -66,6 +66,7 @@ const ItemClassesPage = () => {
               onSelect={handleSelect}
               onAddNew={handleAddNew}
               onSave={handleSave}
+              selectedItem={selectedItem}
             />
             <div className="w-3/4 bg-white rounded-lg shadow p-6 flex flex-col space-y-6">
               <div className="grid grid-cols-2 gap-x-8 gap-y-4">

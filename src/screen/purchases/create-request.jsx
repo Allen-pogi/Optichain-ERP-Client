@@ -51,7 +51,7 @@ const CreateRequest = () => {
   const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
 
   return (
-    <div className="bg-gray-100 h-screen flex flex-col font-roboto overflow-hidden">
+    <div className="bg-gray-100 h-screen  flex flex-col font-roboto overflow-hidden">
       {/* Header */}
       <Header />
 
@@ -69,7 +69,7 @@ const CreateRequest = () => {
                 <span className="material-icons text-base">notes</span>
                 <span>NOTES</span>
               </button>
-              <a className="hover:text-blue-600" href="#">
+              {/* <a className="hover:text-blue-600" href="#">
                 ACTIVITIES
               </a>
               <a className="hover:text-blue-600" href="#">
@@ -80,7 +80,7 @@ const CreateRequest = () => {
               </a>
               <a className="hover:text-blue-600" href="#">
                 CUSTOMIZATION
-              </a>
+              </a> */}
               <a
                 className="hover:text-blue-600 flex items-center space-x-1"
                 href="#"
@@ -101,7 +101,7 @@ const CreateRequest = () => {
 </div> */}
 
         {/* Main Content */}
-        <main className="flex-grow container mx-auto px-4 py-4 overflow-auto">
+        <main className="w-[81.05rem] px-4 py-4 overflow-auto">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             {/* Toolbar */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">

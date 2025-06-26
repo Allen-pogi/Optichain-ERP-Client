@@ -41,17 +41,17 @@ const Sidebar = () => {
   return (
     <div ref={wrapperRef} className="flex">
       {/* Sidebar */}
-      <nav className="space-y-1 bg-gray-200 font-roboto min-h-screen w-56 h-full z-20">
-        <div className="flex justify-center items-center">
+      <nav className="space-y-1 bg-gray-200 font-roboto min-h-screen w-16 md:w-32 text-[10px] lg:w-56 sm:text-[2px] md:text-base h-full z-20  ">
+        <div className="flex justify-center items-center ">
           <NavLink to="/home">
             <img
               src="/OCSI Logo.png"
               alt="Logo"
-              className="w-32 h-24 object-contain"
+              className="w-16 h-16 lg:w-32 lg:h-24 object-contain"
             />
           </NavLink>
         </div>
-        <div className="flex-grow flex flex-col justify-center space-y-1 px-2 text">
+        <div className="flex-grow flex flex-col justify-center space-y-1 px-2  ">
           {sidebarConfig
             .filter((item) => item.roles.includes(role)) // 👈 filter by role
             .map((item) => (
@@ -69,11 +69,11 @@ const Sidebar = () => {
       {/* Right Panel */}
       {/* Right Panel */}
       {activePanel && (
-        <div className="ml-[14em] flex-grow bg-white p-6 h-screen overflow-y-auto w-[32em] fixed z-50 border-r-2">
+        <div className="md:ml-[8em] lg:ml-[14em] ml-[4em] flex-grow border bg-white p-6 h-screen  overflow-y-auto w-[16em] md:w-[32em]  fixed z-50 border-r-2">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-semibold">{activePanel}</h2>
           </div>
-          <div className="space-x-2 mb-6 ">
+          <div className="space-x-2 space-y-2 mb-6   ">
             {(panelActions[activePanel] || []).map((action) => (
               <button
                 key={action.label}
@@ -81,7 +81,7 @@ const Sidebar = () => {
                   navigate(action.path);
                   setActivePanel(null);
                 }}
-                className="bg-yellow-600 text-white px-3 py-3 text-sm rounded hover:bg-yellow-700 "
+                className="bg-yellow-600 text-white md:px-3 md:py-3 px-1 py-1 text-sm rounded hover:bg-yellow-700 "
               >
                 {action.label}
               </button>
@@ -123,11 +123,11 @@ const Sidebar = () => {
 const SidebarItem = ({ icon, label, onClick, active }) => (
   <button
     onClick={onClick}
-    className={`w-full flex items-center px-4 py-2 rounded-lg text-gray-700  ${
+    className={`w-full flex flex-col lg:flex-row items-center px-4 py-2 rounded-lg text-gray-700  ${
       active ? "bg-white " : ""
     }`}
   >
-    <span className="mr-3 text-xl">{icon}</span>
+    <span className="lg:mr-3 text-xl">{icon}</span>
     {label}
   </button>
 );

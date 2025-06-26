@@ -1,6 +1,6 @@
 import React from "react";
 
-const ItemClassList = ({ items, onSelect, onAddNew, onSave }) => {
+const ItemClassList = ({ items, onSelect, onAddNew, onSave, selectedItem }) => {
   return (
     <div className="w-1/4 bg-white rounded-lg shadow p-4 overflow-y-auto">
       {/* Header */}
@@ -46,20 +46,28 @@ const ItemClassList = ({ items, onSelect, onAddNew, onSave }) => {
 
       {/* Scrollable Item List */}
       <div className="text-sm max-h-[calc(100vh-150px)] overflow-y-auto pr-2 space-y-1">
-        {items.map((item, i) => (
-          <div
-            key={i}
-            className="flex items-center cursor-pointer hover:bg-gray-100 p-1 rounded"
-            onClick={() => onSelect(item)}
-          >
-            <span className="material-icons text-base text-gray-500 mr-1">
-              arrow_right
-            </span>
-            <span>
-              {item.classID} - {item.description}
-            </span>
-          </div>
-        ))}
+        {items.map((item, i) => {
+          const isSelected = selectedItem?.classID === item.classID;
+
+          return (
+            <div
+              key={i}
+              className={`flex items-center cursor-pointer p-1 rounded ${
+                isSelected
+                  ? "bg-blue-100 text-blue-700 font-medium"
+                  : "hover:bg-gray-100"
+              }`}
+              onClick={() => onSelect(item)}
+            >
+              <span className="material-icons text-base mr-1 text-gray-500">
+                arrow_right
+              </span>
+              <span>
+                {item.classID} - {item.description}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

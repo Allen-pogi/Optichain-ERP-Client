@@ -81,11 +81,11 @@ const EditRequest = () => {
   };
   return (
     <div
-      className="flex h- bg-gray-100 font-roboto    h-screen overflow-hidden "
+      className="flex h- bg-gray-100 font-roboto  h-screen overflow-hidden "
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       {/* Sidebar */}
-      <div className="w-[240px] ">
+      <div className="lg:w-[240px] w-[128px] ">
         <Sidebar className="h-full" />
       </div>
 
@@ -94,7 +94,6 @@ const EditRequest = () => {
 
         <Header />
 
-        {/* Subnav */}
         <div className="overflow-auto">
           <div className="bg-white shadow-sm  border-b">
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -108,7 +107,7 @@ const EditRequest = () => {
                   <span className="material-icons text-base">notes</span>
                   <span>NOTES</span>
                 </button>
-                <a className="hover:text-blue-600" href="#">
+                {/* <a className="hover:text-blue-600" href="#">
                   ACTIVITIES
                 </a>
                 <a className="hover:text-blue-600" href="#">
@@ -119,8 +118,8 @@ const EditRequest = () => {
                 </a>
                 <a className="hover:text-blue-600" href="#">
                   CUSTOMIZATION
-                </a>
-                <a
+                </a> */}
+                {/* <a
                   className="hover:text-blue-600 flex items-center space-x-1"
                   href="#"
                 >
@@ -128,11 +127,10 @@ const EditRequest = () => {
                   <span className="material-icons text-base">
                     arrow_drop_down
                   </span>
-                </a>
+                </a> */}
               </nav>
             </div>
           </div>
-
           {/* <div className="mt-4 text-sm text-right text-gray-700">
   <p><strong>Total Order Qty:</strong> {totalOrderQty}</p>
   <p><strong>Total Unit Cost:</strong> {totalUnitCost.toFixed(2)}</p>
@@ -140,7 +138,7 @@ const EditRequest = () => {
 </div> */}
 
           {/* Main Content */}
-          <main className="flex-grow container mx-auto px-4 py-4 overflow-auto">
+          <main className="w-[81.05rem] mx-auto px-4 py-4 overflow-auto">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               {/* Toolbar */}
               <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
