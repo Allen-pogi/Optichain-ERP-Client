@@ -72,8 +72,8 @@ const AdminPanel = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <header className="mb-8 flex items-center">
-        <h1 className="text-3xl font-semibold text-gray-800">
+      <header className="mb-8 flex items-center px-32">
+        <h1 className="text-3xl font-semibold text-gray-800 ">
           Admin Panel for
         </h1>
         <img
