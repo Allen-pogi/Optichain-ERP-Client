@@ -69,11 +69,12 @@ const Sidebar = () => {
       {/* Right Panel */}
       {/* Right Panel */}
       {activePanel && (
-        <div className="md:ml-[8em] lg:ml-[14em] ml-[4em] flex-grow border bg-white p-6 h-screen  overflow-y-auto w-[16em] md:w-[32em]  fixed z-50 border-r-2">
+        <div className="md:ml-[8em] lg:ml-[14em] ml-[4em] flex-grow border bg-white p-6 h-screen overflow-y-auto w-[16em] md:w-[48em] fixed z-50 border-r-2">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-semibold">{activePanel}</h2>
           </div>
-          <div className="space-x-2 space-y-2 mb-6   ">
+
+          <div className="space-x-2 space-y-2 mb-6">
             {(panelActions[activePanel] || []).map((action) => (
               <button
                 key={action.label}
@@ -81,39 +82,55 @@ const Sidebar = () => {
                   navigate(action.path);
                   setActivePanel(null);
                 }}
-                className="bg-yellow-600 text-white md:px-3 md:py-3 px-1 py-1 text-sm rounded hover:bg-yellow-700 "
+                className="bg-yellow-600 text-white md:px-3 md:py-3 px-1 py-1 text-sm rounded hover:bg-yellow-700"
               >
                 {action.label}
               </button>
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {Object.entries(
-              sidebarConfig.find((item) => item.label === activePanel)
-                ?.submenu || {}
-            ).map(([section, items]) => (
-              <div key={section}>
-                <h3 className="font-bold text-gray-700 text-lg mb-2">
-                  {section}
-                </h3>
-                <ul className="space-y-4">
-                  {items
-                    .filter((entry) => entry.roles.includes(role)) // 👈 filter submenu items
-                    .map(({ label, path }) => (
-                      <li key={label}>
-                        <Link
-                          onClick={() => setActivePanel(null)}
-                          to={path}
-                          className="text-yellow-600 hover:underline text-md block"
-                        >
-                          {label}
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+
+          {/* Move logic here 👇 */}
+          {sidebarConfig.find((item) => item.label === activePanel)?.submenu &&
+            (() => {
+              const submenu = Object.entries(
+                sidebarConfig.find((item) => item.label === activePanel).submenu
+              );
+              const chunkSize = Math.ceil(submenu.length / 3);
+              const col1 = submenu.slice(0, chunkSize);
+              const col2 = submenu.slice(chunkSize, chunkSize * 2);
+              const col3 = submenu.slice(chunkSize * 2);
+
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[col1, col2, col3].map((column, colIndex) => (
+                    <div key={colIndex} className="space-y-6">
+                      {column.map(([section, items]) => (
+                        <div key={section}>
+                          <h3 className="font-bold text-gray-700 text-lg mb-2">
+                            {section}
+                          </h3>
+                          <ul className="space-y-4">
+                            {items
+                              .filter((entry) => entry.roles.includes(role))
+                              .map(({ label, path }) => (
+                                <li key={label}>
+                                  <Link
+                                    onClick={() => setActivePanel(null)}
+                                    to={path}
+                                    className="text-yellow-600 hover:underline text-md block"
+                                  >
+                                    {label}
+                                  </Link>
+                                </li>
+                              ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
         </div>
       )}
     </div>

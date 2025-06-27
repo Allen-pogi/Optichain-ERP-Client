@@ -53,7 +53,7 @@ const Request = () => {
   const totalPages = Math.ceil(filteredRequests.length / requestsPerPage);
 
   return (
-    <div className="bg-white min-h-screen ">
+    <div className="bg-white min-h-screen w-full ">
       <Header />
       <header className="flex justify-between items-center  border-gray-300">
         <div className="container px-4  flex items-center justify-between">
@@ -74,7 +74,7 @@ const Request = () => {
         </div>
       </header>
 
-      <div className="bg-white shadow-md rounded-lg  ">
+      <div className="bg-white shadow-md rounded-lg w-full    ">
         <div className="flex justify-between items-center px-6 border-b border-gray-200 bg-white text-white">
           <div className="flex items-center space-x-2">
             <button className="p-2 rounded-full hover:bg-red-600 hover:text-white focus:outline-none text-black">
@@ -96,7 +96,7 @@ const Request = () => {
         </div>
 
         {/* Tabs */}
-        <div className="px-6 py-4 border-b border-gray-200">
+        <div className="px-6 py-4 border-b border-gray-200 h-[]">
           <div className="flex space-x-4">
             <button className="text-sm font-medium text-blue-600 border-b-2 border-blue-600 pb-2 px-1 focus:outline-none">
               ALL RECORDS
@@ -108,7 +108,7 @@ const Request = () => {
         </div>
 
         {/* Filters */}
-        <div className="px-6  flex items-center justify-between border-b border-gray-200">
+        <div className="px-6  flex items-center justify-between border-b border-gray-200 h-[3em]">
           <div className="flex items-center space-x-4">
             <div>
               <label
@@ -198,7 +198,7 @@ const Request = () => {
         />
 
         {/* Pagination (Static Example) */}
-        <div className="px-6 py-21 flex items-center justify-between border-t border-gray-200">
+        <div className="px-6 py-21 flex items-center justify-between border-t border-gray-200 h-[em]">
           <div className="text-sm text-gray-600">
             Showing {indexOfFirstRequest + 1} to{" "}
             {Math.min(indexOfLastRequest, filteredRequests.length)} of{" "}

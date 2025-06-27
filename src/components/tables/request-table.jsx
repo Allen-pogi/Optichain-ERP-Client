@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 
 const highlightMatch = (text, query) => {
   if (!query) return text;
@@ -19,15 +21,19 @@ const highlightMatch = (text, query) => {
 
 const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
   return (
-    <div className="overflow-x-auto h-[]">
+    <div className="overflow-x-auto h-[25em] w-full ">
       <table className="min-w-full divide-y divide-gray-200 ">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-8 py-2">
-              Files
+            <th className="px-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-8 py-2">
+              <AttachFileOutlinedIcon
+                style={{ width: "1rem", height: "1rem" }}
+              />
             </th>
-            <th className="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Notes
+            <th className=" px-1 text-left  text-gray-500 uppercase tracking-wider">
+              <DescriptionOutlinedIcon
+                style={{ width: "1rem", height: "1rem" }}
+              />
             </th>
 
             <th className="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -75,12 +81,12 @@ const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
               onDoubleClick={() => onRowDoubleClick(req)}
               className="hover:bg-gray-100"
             >
-              <td className="px-3 whitespace-nowrap">
+              <td className="px-2 whitespace-nowrap">
                 <span className="material-icons text-gray-400 text-base">
                   {req.statusIcon}
                 </span>
               </td>
-              <td className="px-3 whitespace-nowrap">
+              <td className="px-1 whitespace-nowrap">
                 <span
                   className={`material-icons ${req.notes ? "text-yellow-500" : "text-gray-400"} text-base`}
                 >

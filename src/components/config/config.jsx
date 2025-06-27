@@ -10,6 +10,7 @@ import {
   MdReport,
   MdSettings,
   MdNoteAdd,
+  MdTimer,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
@@ -35,66 +36,144 @@ export const sidebarConfig = [
     icon: <IoStarOutline />,
     path: "/home/dashboard",
     roles: ["admin", "viewer", "finance", "purchaser"],
-  },
-  {
-    label: "Inventory",
-    icon: <MdInventory />,
-    roles: ["admin", "inventory"],
     submenu: {
-      Profiles: [
+      Tasks: [
         {
-          label: "Master Financial Calendar",
+          label: "Tasks",
           path: "/home/finance/calendar",
           roles: ["admin", "finance"],
         },
         {
-          label: "Recurring Transactions",
+          label: "Approvals",
           path: "/home/finance/recurring",
           roles: ["admin", "finance"],
         },
         {
-          label: "Chart of Accounts",
+          label: "Events",
+          path: "/home/finance/accounts",
+          roles: ["admin", "finance"],
+        },
+      ],
+    },
+  },
+
+  {
+    label: "Time and Expenses",
+    icon: <MdTimer />,
+    roles: ["admin", "finance"],
+    submenu: {
+      // Same submenu structure as "Inventory"
+      Tasks: [
+        {
+          label: "Tasks",
+          path: "/home/finance/calendar",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Approvals",
+          path: "/home/finance/recurring",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Events",
+          path: "/home/finance/accounts",
+          roles: ["admin", "finance"],
+        },
+      ],
+      Email: [
+        {
+          label: "Incoming",
+          path: "/home/finance/calendar",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Draft",
+          path: "/home/finance/recurring",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Sent",
           path: "/home/finance/accounts",
           roles: ["admin", "finance"],
         },
         {
-          label: "Subaccounts",
+          label: "Outgoing",
+          path: "/home/finance/subaccounts",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Deleted",
+          path: "/home/finance/subaccounts",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Archived",
           path: "/home/finance/subaccounts",
           roles: ["admin", "finance"],
         },
       ],
-      Processes: [
+      "Time Tracking": [
         {
-          label: "Manage Financial Periods",
+          label: "Employee Time Activities",
           path: "/home/finance/periods",
           roles: ["admin", "finance"],
         },
         {
-          label: "Validate Account History",
+          label: "Weekly Crew Time Entry",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Employee Time Cards",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Release Time Activities",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Approve Time Activity Summaries",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Release Time Cards",
           path: "/home/finance/history",
           roles: ["admin", "finance"],
         },
       ],
-      Budgets: [
+      "Explain Claims": [
         {
-          label: "Budgets",
+          label: "Expense Receipts",
           path: "/home/finance/budgets",
           roles: ["admin", "finance"],
         },
         {
-          label: "GL Budget Edit",
+          label: "Expense Claims",
+          path: "/home/finance/budget-edit",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Release Expense Claims",
+          path: "/home/finance/budget-edit",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Bill Expense Claims",
           path: "/home/finance/budget-edit",
           roles: ["admin", "finance"],
         },
       ],
       Inquiries: [
         {
-          label: "Account Summary",
+          label: "Activities",
           path: "/home/finance/summary",
           roles: ["admin", "finance", "viewer"],
         },
         {
-          label: "Account by Subaccount",
+          label: "All Emails",
           path: "/home/finance/by-subaccount",
           roles: ["admin", "finance", "viewer"],
         },
@@ -104,41 +183,42 @@ export const sidebarConfig = [
           roles: ["admin", "finance", "viewer"],
         },
         {
-          label: "Account Details",
+          label: "Search in Files",
           path: "/home/finance/details",
           roles: ["admin", "finance", "viewer"],
         },
       ],
-      Preferences: [
+      Reports: [
         {
-          label: "General Ledger Preferences",
+          label: "Expense Claim Details",
           path: "/home/finance/gl-prefs",
           roles: ["admin"],
         },
         {
-          label: "Financial Year",
+          label: "Expense Claim Details by Employee",
           path: "/home/finance/year",
           roles: ["admin"],
         },
-        { label: "Ledgers", path: "/home/finance/ledgers", roles: ["admin"] },
         {
-          label: "Voucher Entry Codes",
-          path: "/home/finance/vouchers",
+          label: "Expense Claim Details by Department",
+          path: "/home/finance/ledgers",
+          roles: ["admin"],
+        },
+      ],
+      Preferences: [
+        {
+          label: "Time & Expense Preferences",
+          path: "/home/finance/gl-prefs",
           roles: ["admin"],
         },
         {
-          label: "Budget Configuration",
-          path: "/home/finance/budget-config",
+          label: "Earning Types",
+          path: "/home/finance/year",
           roles: ["admin"],
         },
         {
-          label: "Consolidation",
-          path: "/home/finance/consolidation",
-          roles: ["admin"],
-        },
-        {
-          label: "Account Classes",
-          path: "/home/finance/classes",
+          label: "Activity Types",
+          path: "/home/finance/ledgers",
           roles: ["admin"],
         },
       ],
@@ -150,6 +230,24 @@ export const sidebarConfig = [
     roles: ["admin", "finance"],
     submenu: {
       // Same submenu structure as "Inventory"
+
+      Transactions: [
+        {
+          label: "Journal Transactions",
+          path: "/home/finance/calendar",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Journal Vouchers",
+          path: "/home/finance/recurring",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Trial Balance",
+          path: "/home/finance/accounts",
+          roles: ["admin", "finance"],
+        },
+      ],
       Profiles: [
         {
           label: "Master Financial Calendar",
@@ -157,13 +255,18 @@ export const sidebarConfig = [
           roles: ["admin", "finance"],
         },
         {
-          label: "Recurring Transactions",
+          label: "Allocations",
           path: "/home/finance/recurring",
           roles: ["admin", "finance"],
         },
         {
-          label: "Chart of Accounts",
+          label: "Recurring Transactions",
           path: "/home/finance/accounts",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Chart of Accounts",
+          path: "/home/finance/subaccounts",
           roles: ["admin", "finance"],
         },
         {
@@ -174,12 +277,47 @@ export const sidebarConfig = [
       ],
       Processes: [
         {
-          label: "Manage Financial Periods",
+          label: "Release Transactions",
           path: "/home/finance/periods",
           roles: ["admin", "finance"],
         },
         {
-          label: "Validate Account History",
+          label: "Release Vouchers",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Post Transactions",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Run Allocations",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Generate Recurring Transactions",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Reclassify Transactions",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Import Consolidation Data",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Manage Financial Periods",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Recalculate Account History",
           path: "/home/finance/history",
           roles: ["admin", "finance"],
         },
@@ -188,6 +326,11 @@ export const sidebarConfig = [
         {
           label: "Budgets",
           path: "/home/finance/budgets",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Release Budgets",
+          path: "/home/finance/budget-edit",
           roles: ["admin", "finance"],
         },
         {
@@ -216,6 +359,191 @@ export const sidebarConfig = [
           label: "Account Details",
           path: "/home/finance/details",
           roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "GL Budget and Actual BI",
+          path: "/home/finance/details",
+          roles: ["admin", "finance", "viewer"],
+        },
+      ],
+      Reports: [
+        {
+          label: "Trial Balance Summary",
+          path: "/home/finance/gl-prefs",
+          roles: ["admin"],
+        },
+        {
+          label: "Trial Balance Detailed",
+          path: "/home/finance/year",
+          roles: ["admin"],
+        },
+        {
+          label: "Transactions for Period",
+          path: "/home/finance/ledgers",
+          roles: ["admin"],
+        },
+        {
+          label: "Transactions for Account",
+          path: "/home/finance/vouchers",
+          roles: ["admin"],
+        },
+        {
+          label: "GL Edit Summary",
+          path: "/home/finance/budget-config",
+          roles: ["admin"],
+        },
+        {
+          label: "GL Edit Detailed",
+          path: "/home/finance/consolidation",
+          roles: ["admin"],
+        },
+        {
+          label: "GL Account Distribution",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "GL Register",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "GL Register Detailed",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "GL Recurring Transactions",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "GL Recurring Transactions Detailed",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "GL Reversing Batches",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "General Ledger Details  ",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+      ],
+      "Financial Statments": [
+        {
+          label: "CQ Standard BS - Comparative",
+          path: "/home/finance/gl-prefs",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Departamental P&L - PTD",
+          path: "/home/finance/year",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Standard Balance Sheet",
+          path: "/home/finance/ledgers",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Standard P&L - Comparative",
+          path: "/home/finance/vouchers",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Standard P&L - Conso",
+          path: "/home/finance/budget-config",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Standard P&L - Cebu",
+          path: "/home/finance/consolidation",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Standard P&L - Manila",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Departamental P&L - YTD",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Standard P&L - Monthly",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Product Line - Monthly",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Product Line - Comparative",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Standard BS - Monthly",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "CQ Standard P&L - Quarterly",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "MHE - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "ISS - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "PCS - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "CCS - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "PCC - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "HQR - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+
+        {
+          label: "ENGG - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "CEBU - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+        {
+          label: "All Dept - Budget vs Actual",
+          path: "/home/finance/account_class",
+          roles: ["admin"],
         },
       ],
       Preferences: [
@@ -248,6 +576,13 @@ export const sidebarConfig = [
         {
           label: "Account Classes",
           path: "/home/finance/account_class",
+          roles: ["admin"],
+        },
+      ],
+      Other: [
+        {
+          label: "Journal Voucher",
+          path: "/home/finance/gl-prefs",
           roles: ["admin"],
         },
       ],
@@ -365,6 +700,114 @@ export const sidebarConfig = [
           label: "New Purchase Request",
           path: "/home/purchases/create_request",
           roles: ["admin", "purchaser"],
+        },
+      ],
+    },
+  },
+  {
+    label: "Inventory",
+    icon: <MdInventory />,
+    roles: ["admin", "inventory"],
+    submenu: {
+      Profiles: [
+        {
+          label: "Master Financial Calendar",
+          path: "/home/finance/calendar",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Recurring Transactions",
+          path: "/home/finance/recurring",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Chart of Accounts",
+          path: "/home/finance/accounts",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Subaccounts",
+          path: "/home/finance/subaccounts",
+          roles: ["admin", "finance"],
+        },
+      ],
+      Processes: [
+        {
+          label: "Manage Financial Periods",
+          path: "/home/finance/periods",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "Validate Account History",
+          path: "/home/finance/history",
+          roles: ["admin", "finance"],
+        },
+      ],
+      Budgets: [
+        {
+          label: "Budgets",
+          path: "/home/finance/budgets",
+          roles: ["admin", "finance"],
+        },
+        {
+          label: "GL Budget Edit",
+          path: "/home/finance/budget-edit",
+          roles: ["admin", "finance"],
+        },
+      ],
+      Inquiries: [
+        {
+          label: "Account Summary",
+          path: "/home/finance/summary",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account by Subaccount",
+          path: "/home/finance/by-subaccount",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account by Period",
+          path: "/home/finance/by-period",
+          roles: ["admin", "finance", "viewer"],
+        },
+        {
+          label: "Account Details",
+          path: "/home/finance/details",
+          roles: ["admin", "finance", "viewer"],
+        },
+      ],
+      Preferences: [
+        {
+          label: "General Ledger Preferences",
+          path: "/home/finance/gl-prefs",
+          roles: ["admin"],
+        },
+        {
+          label: "Financial Year",
+          path: "/home/finance/year",
+          roles: ["admin"],
+        },
+        { label: "Ledgers", path: "/home/finance/ledgers", roles: ["admin"] },
+        {
+          label: "Voucher Entry Codes",
+          path: "/home/finance/vouchers",
+          roles: ["admin"],
+        },
+        {
+          label: "Budget Configuration",
+          path: "/home/finance/budget-config",
+          roles: ["admin"],
+        },
+        {
+          label: "Consolidation",
+          path: "/home/finance/consolidation",
+          roles: ["admin"],
+        },
+        {
+          label: "Account Classes",
+          path: "/home/finance/classes",
+          roles: ["admin"],
         },
       ],
     },
@@ -572,7 +1015,7 @@ export const DUMMY_ITEMS = [
 
 export const requests = [
   {
-    ref: "RS1",
+    ref: "RQ00009575",
     status: "Open",
     priority: "High",
     date: "6/11/2025",
@@ -658,7 +1101,7 @@ export const requests = [
   },
 
   {
-    ref: "RS2",
+    ref: "RRQ0000957532",
     status: "Open",
     priority: "High",
     date: "6/11/2025",
@@ -751,7 +1194,7 @@ export const requests = [
   },
 
   {
-    ref: "RS3",
+    ref: "RQ000095754",
     status: "Open",
     priority: "High",
     date: "6/11/2025",
@@ -837,7 +1280,7 @@ export const requests = [
   },
 
   {
-    ref: "RS4",
+    ref: "RQ000095755",
     status: "Closed",
     priority: "High",
     date: "6/11/2025",
@@ -924,7 +1367,7 @@ export const requests = [
   },
 
   {
-    ref: "RS5",
+    ref: "RQ000095756",
     status: "Open",
     priority: "High",
     date: "6/11/2025",
@@ -992,7 +1435,7 @@ export const requests = [
   },
 
   {
-    ref: "RS6",
+    ref: "RQ000095757",
     status: "Open",
     priority: "High",
     date: "6/11/2025",
@@ -1078,7 +1521,7 @@ export const requests = [
   },
 
   {
-    ref: "RS7",
+    ref: "RQ000095758",
     status: "Closed",
     priority: "Normal",
     date: "6/11/2025",
@@ -1163,7 +1606,7 @@ export const requests = [
     ],
   },
   {
-    ref: "RS8",
+    ref: "RQ000095759",
     status: "Closed",
     priority: "Normal",
     date: "6/11/2025",
@@ -1230,7 +1673,7 @@ export const requests = [
     ],
   },
   {
-    ref: "RS9",
+    ref: "RQ000095752",
     status: "Open",
     priority: "High",
     date: "6/11/2025",
@@ -1298,7 +1741,7 @@ export const requests = [
   },
 
   {
-    ref: "RS10",
+    ref: "RQ000095751",
     status: "Open",
     priority: "Normal",
     date: "6/11/2025",
@@ -1365,7 +1808,7 @@ export const requests = [
     ],
   },
   {
-    ref: "RS11",
+    ref: "RQ0000957512",
     status: "Closed",
     priority: "High",
     date: "6/11/2025",
@@ -1432,7 +1875,7 @@ export const requests = [
     ],
   },
   {
-    ref: "RS12",
+    ref: "RQ0000957534",
     status: "Open",
     priority: "High",
     date: "6/11/2025",
@@ -1500,7 +1943,7 @@ export const requests = [
   },
 
   {
-    ref: "RS13",
+    ref: "RQ0000957512",
     status: "Open",
     priority: "High",
     date: "6/11/2025",
