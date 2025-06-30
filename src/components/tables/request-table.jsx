@@ -83,7 +83,9 @@ const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
             >
               <td className="px-2 whitespace-nowrap">
                 <span className="material-icons text-gray-400 text-base">
-                  {req.statusIcon}
+                  <AttachFileOutlinedIcon
+                    style={{ width: "1rem", height: "1rem" }}
+                  />
                 </span>
               </td>
               <td className="px-1 whitespace-nowrap">

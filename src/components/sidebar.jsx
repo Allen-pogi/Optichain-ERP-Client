@@ -166,7 +166,7 @@ const Sidebar = () => {
                             <h3 className="font-bold text-gray-700 text-lg mb-2">
                               {section}
                             </h3>
-                            <ul className="space-y-4">
+                            <ul className="space-y-2">
                               {items
                                 .filter((entry) => entry.roles.includes(role))
                                 .map(({ label, path, panel }) => {
