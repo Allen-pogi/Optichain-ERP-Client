@@ -44,9 +44,9 @@ const Sidebar = () => {
   return (
     <div ref={wrapperRef} className="flex">
       {/* Sidebar */}
-      <nav className="space-y-1 bg-gray-200 font-roboto min-h-screen w-16 md:w-32 text-[10px] lg:w-56 sm:text-[2px] md:text-base h-full z-20  ">
+      <nav className="space-y-1 bg-gray-100 font-roboto min-h-screen w-16 md:w-32 text-[10px] lg:w-56 sm:text-[2px] md:text-base h-full z-20 border ">
         <div className="flex justify-center items-center ">
-          <NavLink to="/home">
+          <NavLink to="/home/dashboard">
             <img
               src="/OCSI Logo.png"
               alt="Logo"
@@ -83,7 +83,7 @@ const Sidebar = () => {
 
       {/* Right Panel */}
       {activePanel && (
-        <div className="md:ml-[8em] lg:ml-[14em] ml-[4em] flex-grow border bg-white p-6 h-screen overflow-y-auto w-[16em] md:w-[48em] fixed z-50 border-r-2">
+        <div className="md:ml-[8em] lg:ml-[14em] ml-[4em] flex-grow border bg-white p-6 h-screen overflow-y-auto w-[16em] md:w-[56em] fixed z-50 border-r-2">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-semibold">
               {activePanel === "Favorites" ? "⭐ Favorites" : activePanel}
@@ -176,15 +176,8 @@ const Sidebar = () => {
                                   return (
                                     <li
                                       key={label}
-                                      className="flex justify-between items-center"
+                                      className="flex justify- items-center"
                                     >
-                                      <Link
-                                        onClick={() => setActivePanel(null)}
-                                        to={path}
-                                        className="text-yellow-600 hover:underline text-md"
-                                      >
-                                        {label}
-                                      </Link>
                                       <button
                                         onClick={() =>
                                           toggleFavorite(
@@ -193,7 +186,7 @@ const Sidebar = () => {
                                             activePanel
                                           )
                                         }
-                                        className="text-yellow-500 hover:text-yellow-600 ml-2"
+                                        className="text-yellow-500 hover:text-yellow-600 mr-2"
                                       >
                                         {isFavorite ? (
                                           <FaStar />
@@ -201,6 +194,13 @@ const Sidebar = () => {
                                           <FaRegStar />
                                         )}
                                       </button>
+                                      <Link
+                                        onClick={() => setActivePanel(null)}
+                                        to={path}
+                                        className="text-red-800 hover:underline text-md"
+                                      >
+                                        {label}
+                                      </Link>
                                     </li>
                                   );
                                 })}
@@ -224,7 +224,7 @@ const SidebarItem = ({ icon, label, onClick, active }) => (
   <button
     onClick={onClick}
     className={`w-full flex flex-col lg:flex-row items-center px-4 py-2 rounded-lg text-gray-700 ${
-      active ? "bg-white" : ""
+      active ? "bg-red-100" : ""
     }`}
   >
     <span className="lg:mr-3 text-xl">{icon}</span>

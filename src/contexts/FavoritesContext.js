@@ -69,7 +69,9 @@ export const FavoritesProvider = ({ children }) => {
   }, [user?.token]);
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>
+    <FavoritesContext.Provider
+      value={{ favorites, toggleFavorite, fetchFavorites }}
+    >
       {children}
     </FavoritesContext.Provider>
   );

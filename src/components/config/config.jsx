@@ -607,7 +607,7 @@ export const sidebarConfig = [
         },
         {
           label: "New Purchase Request",
-          path: "/home/purchases/create_request",
+          path: "/home/purchases/create_requestd  ",
           roles: ["admin", "accounting"],
         },
       ],
@@ -628,7 +628,7 @@ export const sidebarConfig = [
       Profiles: [
         {
           label: "Request",
-          path: "/home/request",
+          path: "/home/requestd",
           roles: ["admin", "accounting"],
         },
         {
@@ -786,7 +786,7 @@ export const sidebarConfig = [
         },
         {
           label: "Account Classes",
-          path: "/home/finance/classes",
+          path: "/home/inventory/preferences/classes",
           roles: ["admin"],
         },
       ],

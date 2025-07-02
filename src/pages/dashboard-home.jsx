@@ -1,32 +1,8 @@
 import React from "react";
-import StatCard from "../components/statcard";
-import QuickButton from "../components/quickbutton";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
-import QrCode2Icon from "@mui/icons-material/QrCode2";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import UpdateIcon from "@mui/icons-material/Update";
-import WarningIcon from "@mui/icons-material/Warning";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import InventoryIcon from "@mui/icons-material/Inventory";
-import WarehouseIcon from "@mui/icons-material/Warehouse";
-import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
-import ViewModuleIcon from "@mui/icons-material/ViewModule";
-import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
-const activities = [
-  { activity: "New order placed", date: "2024-07-26", user: "Alice" },
-  { activity: "Inventory updated", date: "2024-07-25", user: "Bob" },
-  { activity: "Customer added", date: "2024-07-24", user: "Charlie" },
-  { activity: "Report generated", date: "2024-07-23", user: "David" },
-  { activity: "Settings changed", date: "2024-07-22", user: "Eve" },
-];
-
-const Dashboard = () => {
+const DashboardHome = () => {
   return (
-    <main className=" flex-1 p-8 h-screen overflow-y-auto">
+    <main className="ml-64 flex-1 p-8">
       <header className="mb-10">
         <h1 className="text-3xl font-semibold text-gray-800">
           Welcome to Optichain Solutions ERP
@@ -42,7 +18,7 @@ const Dashboard = () => {
         <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
           <div className="flex items-center mb-4">
             <span className="material-icons-outlined text-blue-500 text-3xl mr-3">
-              <InventoryIcon />
+              inventory
             </span>
             <h2 className="text-xl font-semibold text-gray-700">
               Total Inventory Items
@@ -56,7 +32,7 @@ const Dashboard = () => {
         <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
           <div className="flex items-center mb-4">
             <span className="material-icons-outlined text-green-500 text-3xl mr-3">
-              <LocalShippingIcon />
+              local_shipping
             </span>
             <h2 className="text-xl font-semibold text-gray-700">
               Active Shipments
@@ -70,7 +46,7 @@ const Dashboard = () => {
         <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
           <div className="flex items-center mb-4">
             <span className="material-icons-outlined text-red-500 text-3xl mr-3">
-              <WarningIcon />
+              warning
             </span>
             <h2 className="text-xl font-semibold text-gray-700">
               Low Stock Alerts
@@ -88,19 +64,17 @@ const Dashboard = () => {
           <div className="space-y-3">
             <button className="w-full flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition duration-150">
               <span className="material-icons-outlined mr-2">
-                <AddCircleOutlineIcon />
+                add_circle_outline
               </span>
               Add New Product
             </button>
             <button className="w-full flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-lg transition duration-150">
-              <span className="material-icons-outlined mr-2">
-                <ReceiptLongIcon />
-              </span>
+              <span className="material-icons-outlined mr-2">receipt</span>
               Create Sales Order
             </button>
             <button className="w-full flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-3 px-4 rounded-lg transition duration-150">
               <span className="material-icons-outlined mr-2">
-                <QrCode2Icon />
+                qr_code_scanner
               </span>
               Scan Barcode
             </button>
@@ -115,7 +89,7 @@ const Dashboard = () => {
           <ul className="space-y-4">
             <li className="flex items-center">
               <span className="material-icons-outlined text-gray-400 mr-3">
-                <CheckCircleOutlineIcon />
+                check_circle
               </span>
               <div>
                 <p className="text-gray-800">Order #SO-2024-00125 shipped.</p>
@@ -124,7 +98,7 @@ const Dashboard = () => {
             </li>
             <li className="flex items-center">
               <span className="material-icons-outlined text-gray-400 mr-3">
-                <AddShoppingCartIcon />
+                add_shopping_cart
               </span>
               <div>
                 <p className="text-gray-800">
@@ -136,7 +110,7 @@ const Dashboard = () => {
             </li>
             <li className="flex items-center">
               <span className="material-icons-outlined text-gray-400 mr-3">
-                <PersonAddIcon />
+                person_add
               </span>
               <div>
                 <p className="text-gray-800">
@@ -147,7 +121,7 @@ const Dashboard = () => {
             </li>
             <li className="flex items-center">
               <span className="material-icons-outlined text-gray-400 mr-3">
-                <UpdateIcon />
+                update
               </span>
               <div>
                 <p className="text-gray-800">
@@ -168,7 +142,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <span className="material-icons-outlined text-4xl text-blue-500 mb-2">
-              <WarehouseIcon />
+              warehouse
             </span>
             <h3 className="font-medium text-gray-700">Warehouse Equipment</h3>
             <p className="text-sm text-gray-500">
@@ -177,7 +151,7 @@ const Dashboard = () => {
           </div>
           <div className="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <span className="material-icons-outlined text-4xl text-green-500 mb-2">
-              <PrecisionManufacturingIcon />
+              precision_manufacturing
             </span>
             <h3 className="font-medium text-gray-700">
               MHE (Material Handling)
@@ -186,14 +160,14 @@ const Dashboard = () => {
           </div>
           <div className="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <span className="material-icons-outlined text-4xl text-yellow-500 mb-2">
-              <ViewModuleIcon />
+              view_module
             </span>
             <h3 className="font-medium text-gray-700">Racking Systems</h3>
             <p className="text-sm text-gray-500">Selective, Drive-in, etc.</p>
           </div>
           <div className="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
             <span className="material-icons-outlined text-4xl text-purple-500 mb-2">
-              <BuildCircleIcon />
+              build_circle
             </span>
             <h3 className="font-medium text-gray-700">Spare Parts</h3>
             <p className="text-sm text-gray-500">For all equipment types</p>
@@ -203,10 +177,10 @@ const Dashboard = () => {
 
       {/* Footer */}
       <footer className="mt-12 text-center text-sm text-gray-500">
-        © 2025 Optichain Solutions Inc. All rights reserved.
+        © 2024 Optichain Solutions Inc. All rights reserved.
       </footer>
     </main>
   );
 };
 
-export default Dashboard;
+export default DashboardHome;

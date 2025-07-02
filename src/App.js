@@ -52,7 +52,7 @@ function App() {
               element={<CreateRequest />}
             />
             <Route
-              path="finance/account_class"
+              path="inventory/preferences/classes"
               element={<AccountClassesPage />}
             />
             <Route path="inventory/item_class" element={<ItemClassesPage />} />

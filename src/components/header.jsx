@@ -8,13 +8,13 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-red-600 text-white shadow-md">
+    <header className="bg-red-700 text-white shadow-md">
       {/* Topbar (mobile) */}
       <div className="flex items-center gap-40 md:gap-[34em]  px-4 py-2 lg:hidden">
         <div className="flex items-center space-x-2 w-24 border">
           <input
             type="text"
-            className="bg-red-600 text-white placeholder-gray-200 rounded-md py-1 px-3 w-full"
+            className="bg-red-800 text-white placeholder-gray-200 rounded-md py-1 px-3 w-full"
             placeholder="Search..."
           />
         </div>
@@ -75,7 +75,7 @@ const Header = () => {
           </button>
           <div className="relative">
             <input
-              className="bg-red-700 text-white placeholder-gray-200 rounded-md py-1.5 px-3 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-400 w-64"
+              className="bg-red-800 text-white placeholder-gray-200 rounded-md py-1.5 px-3 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-400 w-64"
               placeholder="Search..."
               type="text"
             />
