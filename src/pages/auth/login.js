@@ -44,8 +44,8 @@ const Login = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-white relative"
-      style={{ backgroundImage: "url('/backgcool2.svg')" }}
+      className="min-h-screen flex items-center justify-center bg-repeat bg-cover bg-center  relative"
+      style={{ backgroundImage: "url('/wave17.svg')" }}
     >
       {/* 🔄 Show loading spinner while submitting */}
       {loading && <LoadingSpinner />}

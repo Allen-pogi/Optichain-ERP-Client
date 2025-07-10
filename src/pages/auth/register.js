@@ -36,7 +36,7 @@ const Register = () => {
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center bg-white"
-      style={{ backgroundImage: "url('/wave11.svg')" }} // Place your image in public/background.jpg
+      style={{ backgroundImage: "url('/wave15.svg')" }} // Place your image in public/background.jpg
     >
       <div className="absolute inset-0 bg-black opacity-5 z-0"></div>
       <div className="flex bg-white  shadow-lg border-black rounded-xl p-0 w-full max-w-5xl z-10">

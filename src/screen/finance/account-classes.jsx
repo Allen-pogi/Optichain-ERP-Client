@@ -52,7 +52,7 @@ const AccountClassesPage = () => {
     >
       <Header />
       <div className="h-screen overflow-y-auto">
-        <header className="bg-white shadow-sm sticky top-0 z-10">
+        <header className="bg-white shadow-sm  ">
           <div className="container mx-auto px-4 py-3 flex justify-between items-center">
             <div className="flex items-center">
               <h1 className="text-xl font-semibold text-slate-800">

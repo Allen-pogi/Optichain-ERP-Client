@@ -55,7 +55,7 @@ const ItemClassesPage = () => {
   };
 
   return (
-    <div className="bg-gray-100 h-screen  flex flex-col">
+    <div className="bg-slate-50 h-screen  flex flex-col">
       <Header />
       <div className="  overflow-y-auto   ">
         {/* header */}
