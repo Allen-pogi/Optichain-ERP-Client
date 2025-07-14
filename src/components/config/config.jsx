@@ -11,6 +11,7 @@ import {
   MdSettings,
   MdNoteAdd,
   MdTimer,
+  MdOutlineAdminPanelSettings,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
@@ -568,6 +569,7 @@ export const sidebarConfig = [
   },
 
   //until here
+
   {
     label: "Sales Order",
     icon: <MdNoteAdd />,
@@ -803,6 +805,14 @@ export const sidebarConfig = [
     icon: <MdSettings />,
     path: "/home/settings",
     roles: ["admin"],
+  },
+
+  {
+    label: "Admin Panel",
+    icon: <MdOutlineAdminPanelSettings />,
+    path: "/admin",
+    roles: ["admin"],
+    direct: true, // 👈 Add this
   },
 ];
 

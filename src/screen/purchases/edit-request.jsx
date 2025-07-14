@@ -95,7 +95,7 @@ const EditRequest = () => {
         <Header />
 
         <div className="overflow-auto">
-          <div className="bg-white shadow-sm  border-b">
+          <div className="bg-white shadow-sm w-full  border-b">
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
               <h1 className="text-2xl font-semibold text-gray-800">Requests</h1>
               <nav className="flex items-center space-x-6 text-sm text-gray-600">
@@ -138,7 +138,7 @@ const EditRequest = () => {
 </div> */}
 
           {/* Main Content */}
-          <main className="w-[81.05rem] mx-auto px-4 py-4 overflow-auto">
+          <main className="w-full mx-auto px-4 py-4 overflow-auto">
             <div className="bg-white p-6 rounded-lg shadow-lg">
               {/* Toolbar */}
               <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">

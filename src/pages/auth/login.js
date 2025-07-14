@@ -6,7 +6,8 @@ import { toast } from "react-toastify";
 import { API_BASE_URL } from "../../components/config/config";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import LoadingSpinner from "../../components/loading/loading-spinner";
-
+import api, { setAccessToken } from "../../components/axiosInstance";
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const { fetchFavorites } = useFavorites();
   const navigate = useNavigate(); // <-- initialize navigate
@@ -26,19 +27,30 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // 👈 start loading
+    setLoading(true);
+
     try {
-      const res = await axios.post(`${API_BASE_URL}/auth/login`, formData);
+      const res = await api.post(`/auth/login`, formData, {
+        withCredentials: true,
+      });
+
       const { token, user } = res.data;
       localStorage.setItem("token", token);
+      setAccessToken(token); // ✅ save it globally
       localStorage.setItem("user", JSON.stringify(user));
+
+      // ✅ Decode and show expiration
+      const decoded = jwtDecode(token);
+      const expiryDate = new Date(decoded.exp * 1000);
+      console.log("Access token expires at:", expiryDate.toLocaleString());
+
       setMessage(`Welcome, ${user.firstname}!`);
       await fetchFavorites();
       navigate("/home/dashboard");
     } catch (err) {
       toast.error(err.response?.data?.message || "Login failed");
     } finally {
-      setLoading(false); // 👈 stop loading
+      setLoading(false);
     }
   };
 

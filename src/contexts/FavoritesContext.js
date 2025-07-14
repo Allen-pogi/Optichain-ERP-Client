@@ -3,6 +3,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import useAuth from "../components/auth/useAuth";
 import { API_BASE_URL } from "../components/config/config";
+import api from "../components/axiosInstance";
 
 const FavoritesContext = createContext();
 
@@ -22,7 +23,7 @@ export const FavoritesProvider = ({ children }) => {
     console.log("📡 Fetching favorites for user:", user);
 
     try {
-      const res = await axios.get(`${API_BASE_URL}/favorites`, {
+      const res = await api.get(`${API_BASE_URL}/favorites`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -47,8 +48,8 @@ export const FavoritesProvider = ({ children }) => {
     }
 
     try {
-      const res = await axios.post(
-        `${API_BASE_URL}/favorites/toggle`,
+      const res = await api.post(
+        `/favorites/toggle`,
         { path, label, panel },
         { headers: { Authorization: `Bearer ${token}` } }
       );

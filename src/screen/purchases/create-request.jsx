@@ -51,13 +51,13 @@ const CreateRequest = () => {
   const { totalOrderQty, totalUnitCost, totalExtCost } = getTotalValues(rows);
 
   return (
-    <div className="bg-gray-100 h-screen  flex flex-col font-roboto overflow-hidden">
+    <div className="bg-gray-100 h-screen w-full flex flex-col font-roboto overflow-hidden">
       {/* Header */}
       <Header />
 
       {/* Subnav */}
       <div className="overflow-auto">
-        <div className="bg-white shadow-sm  border-b">
+        <div className="bg-white shadow-sm  border-b w-full">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <h1 className="text-2xl font-semibold text-gray-800">Requests</h1>
             <nav className="flex items-center space-x-6 text-sm text-gray-600">
@@ -101,7 +101,7 @@ const CreateRequest = () => {
 </div> */}
 
         {/* Main Content */}
-        <main className="w-[81.05rem] px-4 py-4 overflow-auto">
+        <main className="w-full px-4 py-4 overflow-auto">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             {/* Toolbar */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">

@@ -17,14 +17,19 @@ import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
 import AccountClassesPage from "./screen/finance/account-classes";
 import ItemClassesPage from "./screen/inventory/item-classes";
-import AdminPanel from "./pages/admin/admin";
 import { FavoritesProvider } from "./contexts/FavoritesContext";
 import FavoritesTab from "./screen/favorites/favoritesTab";
+import SessionTimeoutHandler from "./components/session-timeout";
+import AdminLogin from "./admin/login";
+import AdminPanel from "./admin/admin";
+import ProtectedRouteforAdmin from "./components/protectedrouteforadmin";
+import AdminProtectedRoute from "./components/protectedrouteforadmin";
 
 function App() {
   return (
     <FavoritesProvider>
       <Router>
+        <SessionTimeoutHandler /> {/* ✅ Now inside Router */}
         {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Register />} />
@@ -33,7 +38,16 @@ function App() {
           <Route path="PDF" element={<SamplePDF />} />
           <Route path="files" element={<FileList />} />
           <Route path="/edit_request/:ref" element={<EditRequest />} />
-          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminProtectedRoute>
+                <AdminPanel />
+              </AdminProtectedRoute>
+            }
+          />
 
           <Route
             path="/home/*"

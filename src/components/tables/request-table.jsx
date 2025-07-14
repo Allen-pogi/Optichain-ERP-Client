@@ -21,7 +21,7 @@ const highlightMatch = (text, query) => {
 
 const RequestTable = ({ currentRequests, searchQuery, onRowDoubleClick }) => {
   return (
-    <div className="overflow-x-auto h-[25em] w-full ">
+    <div className="overflow-x-auto overflow-y-hidden h-[26em] w-full ">
       <table className="min-w-full divide-y divide-gray-200 ">
         <thead className="bg-gray-50">
           <tr>

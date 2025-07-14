@@ -68,16 +68,35 @@ const Sidebar = () => {
           {/* --- Other Tabs from Config --- */}
           {sidebarConfig
             .filter((item) => item.roles.includes(role))
-            .map((item) => (
-              <SidebarItem
-                key={item.label}
-                icon={item.icon}
-                label={item.label}
-                onClick={() => handleMenuClick(item.label)}
-                active={activePanel === item.label}
-                isFavorite={false}
-              />
-            ))}
+            .map((item) => {
+              if (item.direct) {
+                return (
+                  <NavLink
+                    key={item.label}
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `w-full flex flex-col lg:flex-row items-center px-4 py-2 rounded-lg text-gray-700 ${
+                        isActive ? "bg-red-100" : ""
+                      }`
+                    }
+                  >
+                    <span className="lg:mr-3 text-xl">{item.icon}</span>
+                    {item.label}
+                  </NavLink>
+                );
+              }
+
+              return (
+                <SidebarItem
+                  key={item.label}
+                  icon={item.icon}
+                  label={item.label}
+                  onClick={() => handleMenuClick(item.label)}
+                  active={activePanel === item.label}
+                  isFavorite={false}
+                />
+              );
+            })}
         </div>
       </nav>
 
@@ -118,7 +137,7 @@ const Sidebar = () => {
                         onClick={() =>
                           toggleFavorite(fav.path, fav.label, fav.panel)
                         }
-                        className="text-yellow-500 hover:text-yellow-600 ml-2"
+                        className="text-red-500 hover:text-red-700 ml-2"
                       >
                         <FaStar />
                       </button>
@@ -186,7 +205,7 @@ const Sidebar = () => {
                                             activePanel
                                           )
                                         }
-                                        className="text-yellow-500 hover:text-yellow-600 mr-2"
+                                        className="text-red-500 hover:text-red-800 mr-2"
                                       >
                                         {isFavorite ? (
                                           <FaStar />

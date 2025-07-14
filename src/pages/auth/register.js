@@ -4,6 +4,7 @@ import { FaEnvelope, FaLock, FaUser, FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { API_BASE_URL } from "../../components/config/config";
+import api from "../../components/axiosInstance";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${API_BASE_URL}/auth/register`, formData);
+      const res = await api.post(`/auth/register`, formData);
       setMessage(res.data.message);
     } catch (err) {
       console.error("Registration error:", err.response?.data || err.message);
