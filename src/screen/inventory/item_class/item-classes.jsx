@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Header from "../../components/header";
-import ItemClassList from "../../components/config/item-c;lass-list";
-import { DUMMY_ITEM_CLASSES } from "../../components/config/config";
+import Header from "../../../components/header";
+import ItemClassList from "../../../components/config/item-c;lass-list";
+import { DUMMY_ITEM_CLASSES } from "../../../components/config/config";
 
 const ItemClassesPage = () => {
   const [selectedItem, setSelectedItem] = useState(null);

@@ -777,9 +777,19 @@ export const sidebarConfig = [
           roles: ["admin"],
         },
         {
+          label: "Posting Classes",
+          path: "/home/inventory/preferences/posting_class",
+          roles: ["admin", "inventory"],
+        },
+        {
           label: "Budget Configuration",
           path: "/home/finance/budget-config",
           roles: ["admin"],
+        },
+        {
+          label: "Item Classes",
+          path: "/home/inventory/preferences/item_class",
+          roles: ["admin", "inventory"],
         },
         {
           label: "Consolidation",

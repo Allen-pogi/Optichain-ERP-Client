@@ -3,13 +3,13 @@ import React, { useState } from "react";
 
 const tabList = [
   "DOCUMENT DETAILS",
-  "SHIPPING INSTRUCTIONS",
+  "SHIPPING",
   "VENDOR INFO",
-  "APPROVAL DETAILS",
-  "OTHER INFORMATION",
+  "APPROVAL ",
+  "OTHERS",
 ];
 
-const Tabs = ({ itemsTable }) => {
+const Tabs = ({ itemsTable, shippingInstruction }) => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
@@ -33,7 +33,8 @@ const Tabs = ({ itemsTable }) => {
         </nav>
       </div>
       <div className="mt-4">
-        {activeTab === 0 ? itemsTable : <div />}
+        {activeTab === 0 ? itemsTable : ""}
+        {activeTab === 1 ? shippingInstruction : ""}
       </div>
     </div>
   );

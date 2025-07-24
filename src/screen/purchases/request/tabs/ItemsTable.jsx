@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DUMMY_ITEMS } from "../config/config"; // Adjust path as needed
+import { DUMMY_ITEMS } from "../../../../components/config/config"; // Adjust path as needed
 
 const ItemsTable = ({ rows, setRows }) => {
   const [showItemPicker, setShowItemPicker] = useState(false);

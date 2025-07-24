@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Header from "../../components/header";
-import { DUMMY_ITEMS } from "../../components/config/config";
-import Tabs from "../../components/tabs/tabs";
-import ItemsTable from "../../components/tabs/ItemsTable";
-import MyPDF from "../../components/pdf/pdf";
+import Header from "../../../components/header";
+import { DUMMY_ITEMS } from "../../../components/config/config";
+import Tabs from "./tabs/Tab";
+import ItemsTable from "./tabs/ItemsTable";
+import MyPDF from "../../../components/pdf/pdf";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const CreateRequest = () => {
@@ -166,11 +166,11 @@ const CreateRequest = () => {
                   Ref. Nbr.:
                 </label>
                 <div className="flex items-center">
-                  <span className="inline-flex items-center px-3 py-2 rounded-l-md border border-r-0 border-gray-300 bg-blue-100 text-blue-700 text-sm font-semibold">
+                  <span className="inline-flex items-center px-4 py-2 rounded-l-md border border-r-0 border-gray-300 bg-blue-100 text-blue-700 text-sm font-semibold">
                     &lt;NEW&gt;
                   </span>
                   <input
-                    className="flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 focus:ring-blue-500 focus:border-blue-500 py-2 px-3"
+                    className="flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 border py-2 px-3"
                     id="ref-nbr"
                     type="text"
                   />

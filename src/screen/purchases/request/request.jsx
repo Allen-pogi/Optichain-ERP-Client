@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BiEdit, BiPlus, BiRefresh, BiTrash } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../../components/header";
-import RequestTable from "../../components/tables/request-table";
-import { requests } from "../../components/config/config";
+import Header from "../../../components/header";
+import RequestTable from "../../../components/tables/request-table";
+import { requests } from "../../../components/config/config";
 
 const Request = () => {
   const [priorityFilter, setPriorityFilter] = useState("All");

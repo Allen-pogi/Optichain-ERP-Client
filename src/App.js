@@ -6,17 +6,17 @@ import Inventory from "./screen/inventory";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/protectedroute";
-import Request from "./screen/purchases/request";
-import CreateRequest from "./screen/purchases/create-request";
+import Request from "./screen/purchases/request/request";
+import CreateRequest from "./screen/purchases/request/create-request";
 import Header from "./components/header";
 import FileUpload from "./components/file-upload";
 import FileList from "./components/files-list";
 import SamplePDF from "./components/pdf/samplepdf";
-import EditRequest from "./screen/purchases/edit-request";
+import EditRequest from "./screen/purchases/request/edit-request";
 import Register from "./pages/auth/register";
 import Login from "./pages/auth/login";
 import AccountClassesPage from "./screen/finance/account-classes";
-import ItemClassesPage from "./screen/inventory/item-classes";
+import ItemClassesPage from "./screen/inventory/item_class/item-classes";
 import { FavoritesProvider } from "./contexts/FavoritesContext";
 import FavoritesTab from "./screen/favorites/favoritesTab";
 import SessionTimeoutHandler from "./components/session-timeout";
@@ -24,6 +24,8 @@ import AdminLogin from "./admin/login";
 import AdminPanel from "./admin/admin";
 import ProtectedRouteforAdmin from "./components/protectedrouteforadmin";
 import AdminProtectedRoute from "./components/protectedrouteforadmin";
+import PostingClassList from "./screen/inventory/posting-class/posting-class-list";
+import EditPostingClasses from "./screen/inventory/posting-class/edit-posting-classes";
 
 function App() {
   return (
@@ -38,6 +40,10 @@ function App() {
           <Route path="PDF" element={<SamplePDF />} />
           <Route path="files" element={<FileList />} />
           <Route path="/edit_request/:ref" element={<EditRequest />} />
+          <Route
+            path="/edit_posting_class/:classId"
+            element={<EditPostingClasses />}
+          />
           <Route path="/admin/login" element={<AdminLogin />} />
 
           <Route
@@ -69,7 +75,18 @@ function App() {
               path="inventory/preferences/classes"
               element={<AccountClassesPage />}
             />
-            <Route path="inventory/item_class" element={<ItemClassesPage />} />
+            <Route
+              path="inventory/preferences/item_class"
+              element={<ItemClassesPage />}
+            />
+            <Route
+              path="inventory/preferences/posting_class"
+              element={<PostingClassList />}
+            />
+            <Route
+              path="inventory/preferences/edit/posting_class"
+              element={<EditPostingClasses />}
+            />
             <Route path="dashboard" element={<Dashboard />} />
 
             <Route path="inventory" element={<Inventory />} />
