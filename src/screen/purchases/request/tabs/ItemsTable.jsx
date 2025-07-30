@@ -53,8 +53,19 @@ const ItemsTable = ({ rows, setRows }) => {
       {showItemPicker && (
         <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 ">
           <div className="bg-white rounded shadow-lg p-6 min-w-[400px] max-w-[56vw]">
-            <div className="overflow-x-auto max-w-full">
+            <div className="flex justify-between items-start">
               <h3 className="text-lg font-bold mb-4">Select Item to Add</h3>
+              <button
+                className="  "
+                onClick={() => {
+                  setShowItemPicker(false);
+                  setSelectedIdx(null);
+                }}
+              >
+                x
+              </button>
+            </div>
+            <div className="overflow-x-auto max-w-full justify-end">
               <table className="min-w-full mb-4 ">
                 <thead className="">
                   <tr className="bg-gray-100 py-8">
@@ -146,15 +157,6 @@ const ItemsTable = ({ rows, setRows }) => {
                 }}
               >
                 Add
-              </button>
-              <button
-                className="px-4 py-1 bg-gray-300 rounded hover:bg-gray-400"
-                onClick={() => {
-                  setShowItemPicker(false);
-                  setSelectedIdx(null);
-                }}
-              >
-                Cancel
               </button>
             </div>
           </div>
